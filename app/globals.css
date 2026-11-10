@@ -1,26 +1,250 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-border: hsl(var(--border));
+  --color-ring: hsl(var(--ring));
 }
 
-@media (prefers-color-scheme: dark) {
+/* ============================================
+   shadcn/ui Semantic Theme Variables & Tokens
+   ============================================ */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Reference Light Mode: soft minty-white backdrop, crisp white cards, dark slate text, vibrant teal accent */
+    --background: 180 25% 97%;
+    --foreground: 195 45% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 195 45% 10%;
+    --primary: 173 100% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 175 40% 92%;
+    --secondary-foreground: 195 45% 12%;
+    --muted: 180 18% 92%;
+    --muted-foreground: 195 16% 42%;
+    --accent: 173 100% 35%;
+    --accent-foreground: 0 0% 100%;
+    --border: 180 20% 86%;
+    --ring: 173 100% 35%;
+
+    /* Custom Design System Tokens (Light Mode) */
+    --color-bg-primary: #f0f7f7;
+    --color-bg-secondary: #e6f2f2;
+    --color-bg-surface: #ffffff;
+    --color-bg-card: rgba(255, 255, 255, 0.88);
+    --color-bg-card-hover: rgba(0, 168, 150, 0.06);
+    --color-border: rgba(17, 35, 41, 0.1);
+    --color-border-light: rgba(0, 168, 150, 0.25);
+
+    --color-text-primary: #0f2228;
+    --color-text-secondary: #3b535d;
+    --color-text-muted: #57717a;
+
+    --color-accent: #00a896;
+    --color-accent-light: #06b6d4;
+    --color-accent-dark: #008274;
+    --color-accent-glow: rgba(0, 168, 150, 0.25);
+    --color-accent-subtle: rgba(0, 168, 150, 0.08);
+
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+
+    /* Typography */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 3.75rem;
+
+    --leading-tight: 1.2;
+    --leading-normal: 1.6;
+    --leading-relaxed: 1.8;
+
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+
+    /* Layout */
+    --max-width: 1200px;
+    --nav-height: 72px;
+    --section-padding: var(--space-20) var(--space-6);
+
+    /* Borders & Radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+  }
+
+  .dark {
+    /* Reference Dark Mode: deep obsidian dark teal-black, deep slate-teal cards, crisp white text, neon cyan/teal accent */
+    --background: 192 60% 4%;
+    --foreground: 180 30% 98%;
+    --card: 192 45% 8%;
+    --card-foreground: 180 30% 98%;
+    --primary: 172 100% 47%;
+    --primary-foreground: 192 60% 4%;
+    --secondary: 192 40% 12%;
+    --secondary-foreground: 180 30% 98%;
+    --muted: 192 40% 12%;
+    --muted-foreground: 192 18% 62%;
+    --accent: 172 100% 47%;
+    --accent-foreground: 192 60% 4%;
+    --border: 192 35% 16%;
+    --ring: 172 100% 47%;
+
+    /* Custom Design System Tokens (Dark Mode) */
+    --color-bg-primary: #040d10;
+    --color-bg-secondary: #07151a;
+    --color-bg-surface: #0c2026;
+    --color-bg-card: rgba(11, 26, 31, 0.75);
+    --color-bg-card-hover: rgba(0, 240, 210, 0.08);
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-light: rgba(0, 240, 210, 0.3);
+
+    --color-text-primary: #f2fbfb;
+    --color-text-secondary: #c2d8df;
+    --color-text-muted: #8aa6af;
+
+    --color-accent: #00f0d2;
+    --color-accent-light: #38bdf8;
+    --color-accent-dark: #00c4ab;
+    --color-accent-glow: rgba(0, 240, 210, 0.3);
+    --color-accent-subtle: rgba(0, 240, 210, 0.08);
+
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
   }
 }
 
+@layer base {
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-light);
+  border-radius: 5px;
+  border: 2px solid var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Section Header Shared */
+.highlightText {
+  color: var(--color-accent);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Typing cursor blink animation (used in Hero) */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
 }
