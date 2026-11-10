@@ -2,16 +2,16 @@ import type { ReactNode } from 'react';
 import {
   Code,
   Layout,
-  BarChart3,
-  Settings,
-  Users,
-  Plug,
+  Clapperboard,
+  Palette,
+  PenTool,
+  BookOpen,
   Smartphone,
-  RefreshCw,
-  Bug,
+  Sparkles,
+  MessageSquareText,
+  GraduationCap,
 } from 'lucide-react';
 
-import { FigmaIcon } from './Icons';
 import SectionHeader from './SectionHeader';
 import { Card } from '@/components/ui/card';
 
@@ -24,63 +24,63 @@ interface Service {
 const services: Service[] = [
   {
     icon: <Code size={22} />,
-    title: 'React.js Development',
+    title: 'Social Media Content',
     description:
-      'Building dynamic, component-based web applications with React.js and modern JavaScript.',
+      'Creating engaging social media content, including short-form educational and kids-focused videos.',
   },
   {
-    icon: <Layout size={22} />,
-    title: 'Next.js Development',
+    icon: <Clapperboard size={22} />,
+    title: 'YouTube Shorts & Videos',
     description:
-      'Server-side rendered and statically generated applications with Next.js for performance and SEO.',
-  },
-  {
-    icon: <BarChart3 size={22} />,
-    title: 'SaaS Dashboard Development',
-    description:
-      'Data-driven SaaS dashboards with analytics, reporting interfaces, and data visualization.',
-  },
-  {
-    icon: <Settings size={22} />,
-    title: 'Admin Panel Development',
-    description:
-      'Feature-rich admin panels with user management, data tables, search, filtering, and CRUD operations.',
-  },
-  {
-    icon: <Users size={22} />,
-    title: 'CRM Frontend Development',
-    description:
-      'Customer relationship management interfaces with role-based dashboards and data management.',
-  },
-  {
-    icon: <Plug size={22} />,
-    title: 'API Integration',
-    description:
-      'REST API integration, data fetching, state management, and third-party service connections.',
-  },
-  {
-    icon: <FigmaIcon size={22} />,
-    title: 'Figma to React / Next.js',
-    description:
-      'Pixel-perfect conversion of Figma designs into responsive React and Next.js components.',
+      'Developing YouTube video content with story ideas, scripts, thumbnails, titles, and descriptions.',
   },
   {
     icon: <Smartphone size={22} />,
-    title: 'Responsive UI Development',
+    title: 'Video Editing with CapCut Pro',
     description:
-      'Mobile-first responsive interfaces that work seamlessly across all screen sizes and devices.',
+      'Editing promotional videos for game apps using CapCut Pro.',
   },
   {
-    icon: <RefreshCw size={22} />,
-    title: 'Existing Project Improvements',
+    icon: <Palette size={22} />,
+    title: 'Canva Logo Design',
     description:
-      'Upgrading, refactoring, and enhancing existing frontend projects with modern practices.',
+      'Designing brand logos for clients using Canva.',
   },
   {
-    icon: <Bug size={22} />,
-    title: 'Bug Fixing & Optimization',
+    icon: <Layout size={22} />,
+    title: 'Canva Graphic Design',
     description:
-      'Debugging frontend issues, resolving performance bottlenecks, and improving user experience.',
+      'Creating graphics with Canva as part of digital content creation.',
+  },
+  {
+    icon: <Sparkles size={22} />,
+    title: 'AI-Assisted Content',
+    description:
+      'Using AI tools for content ideation, visual creation, and video production.',
+  },
+  {
+    icon: <PenTool size={22} />,
+    title: 'Creative Writing & Storytelling',
+    description:
+      'Developing story ideas and writing simple, engaging scripts for video content.',
+  },
+  {
+    icon: <MessageSquareText size={22} />,
+    title: 'Thumbnails, Titles & Descriptions',
+    description:
+      'Preparing audience-friendly thumbnails, titles, and descriptions for YouTube videos.',
+  },
+  {
+    icon: <BookOpen size={22} />,
+    title: 'Physics & Mathematics Tutoring',
+    description:
+      'Tutoring primary students with a focus on concept clarity and interactive learning.',
+  },
+  {
+    icon: <GraduationCap size={22} />,
+    title: 'Customized Student Support',
+    description:
+      'Assessing student progress through customized tests and feedback, and adapting lessons to individual needs.',
   },
 ];
 
@@ -109,7 +109,7 @@ export default function Services() {
           label="What I Do"
           title="My"
           highlight="Services"
-          subtitle="Frontend development services tailored for startups, businesses, and SaaS products."
+          subtitle="Content creation, design, video editing, and tutoring skills described in my CV."
         />
 
         {/* =================================================

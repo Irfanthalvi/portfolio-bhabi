@@ -13,30 +13,30 @@ const steps: Step[] = [
   {
     icon: <Search size={22} />,
     number: '01',
-    title: 'Discovery',
+    title: 'Research & Learning',
     description:
-      'Understanding your requirements, goals, target users, and project scope to define the right approach.',
+      'Researching ideas and learning about digital trends to guide engaging content.',
   },
   {
     icon: <PenTool size={22} />,
     number: '02',
-    title: 'Design & Planning',
+    title: 'Story & Script',
     description:
-      'Planning the architecture, component structure, and UI layout before writing any code.',
+      'Developing story ideas and writing scripts for educational and kids-focused videos.',
   },
   {
     icon: <Code size={22} />,
     number: '03',
-    title: 'Development',
+    title: 'Create & Edit',
     description:
-      'Building the application with clean, modular code, reusable components, and API integrations.',
+      'Using AI tools for ideation and visual creation, then editing video content with CapCut Pro.',
   },
   {
     icon: <Rocket size={22} />,
     number: '04',
-    title: 'Testing & Launch',
+    title: 'Prepare for YouTube',
     description:
-      'Testing across devices, fixing issues, optimizing performance, and deploying the final product.',
+      'Creating thumbnails, titles, and descriptions for simple, engaging, audience-friendly content.',
   },
 ];
 
@@ -45,10 +45,10 @@ export default function Process() {
     <section className="py-20 bg-background relative">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          label="How I Work"
-          title="Development"
-          highlight="Process"
-          subtitle="A structured approach to delivering quality frontend solutions."
+          label="Content Creation"
+          title="From Idea"
+          highlight="to Video"
+          subtitle="A snapshot of the content creation activities described in my CV."
         />
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, index) => (

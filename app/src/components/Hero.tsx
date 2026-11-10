@@ -2,12 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { ArrowDown, Mail, Code2, Briefcase } from 'lucide-react';
+import { Mail, Code2, Briefcase } from 'lucide-react';
 import {
-  GithubIcon,
   WhatsappIcon,
-  FacebookIcon,
-  LinkedinIcon,
 } from './Icons';
 
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -15,10 +12,10 @@ import { Float, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 
 const roles = [
-  'Frontend Developer',
-  'React.js & Next.js Specialist',
-  'TypeScript Developer',
-  'SaaS Dashboard Builder',
+  'Physics Graduate',
+  'Social Media Content Creator',
+  'Primary Tutor',
+  'Video Editor & Canva Designer',
 ];
 
 /* =========================================================
@@ -375,7 +372,7 @@ export default function Hero() {
                   'drop-shadow(0 4px 24px var(--color-accent-glow))',
               }}
             >
-              Irfan Ali
+              Rubab Fatima
             </h1>
 
 
@@ -401,39 +398,18 @@ export default function Hero() {
             {/* Description */}
 
             <p className="text-base text-muted-foreground leading-[1.75] mb-8 max-w-[600px]">
-              Frontend Developer with{' '}
+              Physics graduate and creative content creator with experience in{' '}
 
               <strong className="text-primary font-semibold">
-                3+ years of experience
+                teaching since 2019
+              </strong>
+              {' '}and YouTube content creation since 2025. Skilled in{' '}
+
+              <strong className="text-primary font-semibold">
+                CapCut Pro, Canva, and AI-assisted content creation
               </strong>{' '}
 
-              building scalable,
-              production-ready web applications using{' '}
-
-              <strong className="text-primary font-semibold">
-                React.js
-              </strong>
-              ,{' '}
-
-              <strong className="text-primary font-semibold">
-                Next.js
-              </strong>
-              , and{' '}
-
-              <strong className="text-primary font-semibold">
-                TypeScript
-              </strong>
-              .{' '}
-
-              Specializing in SaaS dashboards,
-              admin panels, CRM interfaces, and
-              API-integrated business tools with{' '}
-
-              <strong className="text-primary font-semibold">
-                Tailwind CSS
-              </strong>{' '}
-
-              and modern frontend architecture.
+              with a focus on engaging short-form video.
             </p>
 
 
@@ -445,33 +421,15 @@ export default function Hero() {
 
               {[
                 {
-                  href: 'https://github.com/Irfanthalvi',
-                  icon: <GithubIcon size={18} />,
-                  label: 'GitHub',
-                },
-
-                {
-                  href: 'https://www.linkedin.com/in/irfan-ali-66205a2b3',
-                  icon: <LinkedinIcon size={18} />,
-                  label: 'LinkedIn',
-                },
-
-                {
-                  href: 'https://wa.me/923337484980?text=Hi%20I%20want%20to%20connect%20with%20you',
+                  href: 'https://wa.me/923468074658',
                   icon: <WhatsappIcon size={18} />,
                   label: 'WhatsApp',
                 },
 
                 {
-                  href: 'mailto:irfanthalvi@gmail.com',
+                  href: 'mailto:rubab1668@gmail.com',
                   icon: <Mail size={18} />,
                   label: 'Email',
-                },
-
-                {
-                  href: 'https://www.facebook.com/irfanali.balti.1',
-                  icon: <FacebookIcon size={18} />,
-                  label: undefined,
                 },
               ].map((s) => (
 
@@ -504,12 +462,11 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 mb-10 w-full sm:w-auto">
 
               <a
-                href="/Irfan-Ali-Resume.pdf"
-                download
+                href="mailto:rubab1668@gmail.com?subject=Resume%20Request"
                 className="inline-flex items-center justify-center gap-2 text-base font-bold text-white bg-gradient-to-r from-[var(--color-accent-dark)] to-[var(--color-accent)] px-7 py-3.5 rounded-full transition-all duration-300 shadow-[0_4px_20px_var(--color-accent-glow)] hover:-translate-y-[3px] hover:shadow-[0_6px_28px_var(--color-accent-glow)] hover:brightness-110"
               >
-                <ArrowDown size={18} />
-                Download Resume
+                <Mail size={18} />
+                Request Resume
               </a>
 
 
@@ -535,18 +492,18 @@ export default function Hero() {
 
               {[
                 {
-                  value: '3+',
-                  label: 'Years Experience',
+                  value: '2019+',
+                  label: 'Tutoring Since',
                 },
 
                 {
-                  value: 'React.js',
-                  label: 'Primary Stack',
+                  value: '2025+',
+                  label: 'Content Creation',
                 },
 
                 {
-                  value: 'Next.js',
-                  label: 'Framework',
+                  value: 'BSc',
+                  label: 'Physics Graduate',
                 },
               ].map((stat) => (
 
@@ -628,7 +585,7 @@ export default function Hero() {
                     FRONT IMAGE
                 ================================================= */}
 
-                <div
+                {/* <div
                   className="absolute inset-0 rounded-[28px] p-[3px]"
                   style={{
                     backfaceVisibility: 'hidden',
@@ -646,7 +603,7 @@ export default function Hero() {
 
                     <Image
                       src="/irfan-new.jpg"
-                      alt="Irfan Ali - Frontend Developer"
+                      alt="Portfolio portrait"
                       width={400}
                       height={480}
                       className="w-full h-full object-cover object-top"
@@ -654,7 +611,6 @@ export default function Hero() {
                     />
 
 
-                    {/* Bottom Fade */}
 
                     <div
                       className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
@@ -664,8 +620,6 @@ export default function Hero() {
                       }}
                     />
 
-
-                    {/* Click Hint */}
 
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
 
@@ -677,14 +631,14 @@ export default function Hero() {
 
                   </div>
 
-                </div>
+                </div> */}
 
 
                 {/* =================================================
                     BACK IMAGE
                 ================================================= */}
 
-                <div
+                {/* <div
                   className="absolute inset-0 rounded-[28px] p-[3px]"
                   style={{
                     backfaceVisibility: 'hidden',
@@ -705,14 +659,13 @@ export default function Hero() {
 
                     <Image
                       src="/irfan-back.jpg"
-                      alt="Irfan Ali - Back Portrait"
+                      alt="Portfolio portrait"
                       width={400}
                       height={480}
                       className="w-full h-full object-cover object-center"
                     />
 
 
-                    {/* Back Overlay */}
 
                     <div
                       className="absolute inset-0 pointer-events-none"
@@ -723,7 +676,6 @@ export default function Hero() {
                     />
 
 
-                    {/* Back Hint */}
 
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
 
@@ -735,7 +687,7 @@ export default function Hero() {
 
                   </div>
 
-                </div>
+                </div> */}
 
               </div>
 
@@ -757,7 +709,7 @@ export default function Hero() {
                     />
 
                     <span>
-                      React.js &amp; Next.js
+                      CapCut Pro &amp; Canva
                     </span>
 
                   </div>
@@ -773,7 +725,7 @@ export default function Hero() {
                     />
 
                     <span>
-                      3+ Years Exp.
+                      Tutor Since 2019
                     </span>
 
                   </div>

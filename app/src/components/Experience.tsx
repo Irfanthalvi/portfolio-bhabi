@@ -19,49 +19,59 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    id: 'techsloab',
-    company: 'Techsloab',
-    role: 'Frontend Developer | React.js',
-    period: 'January 2023 – Present',
+    id: 'home-tuition',
+    company: 'Home Tuition',
+    role: 'Primary Tutor',
+    period: '2019 – Present',
     location: 'Karachi, Pakistan',
-    type: 'Full-Time',
-    status: 'Current Role',
+    type: 'Tutoring',
+    status: 'Current',
     statusType: 'current',
     description:
-      'Building responsive and user-friendly web applications using React.js and modern frontend technologies.',
+      'Tutors primary students with a focus on concept clarity and interactive learning.',
     highlights: [
-      'Developed responsive web applications using React.js and JavaScript ES6+',
-      'Built reusable and modular UI components',
-      'Integrated REST APIs and handled frontend data management',
-      'Implemented form validation using React Hook Form and Zod',
-      'Debugged and resolved frontend issues',
-      'Improved frontend performance and user experience',
-      'Used Git and GitHub for version control and collaboration',
-      'Worked collaboratively in an Agile development environment',
+      'Teaches primary students using clear, interactive lessons',
+      'Assesses student progress with customized tests and feedback sessions',
+      'Adapts teaching methods to individual student needs',
+      'Teaches with clear communication',
     ],
-    techStack: ['React.js', 'JavaScript (ES6+)', 'REST APIs', 'React Hook Form', 'Zod', 'Git', 'GitHub'],
+    techStack: ['Primary Tutoring', 'Concept Clarity', 'Interactive Learning', 'Customized Tests', 'Communication'],
   },
   {
-    id: 'ascensie',
-    company: 'Ascensie Online',
-    role: 'Frontend Developer | React.js & Next.js',
-    period: 'October 2025 – February 2026',
-    location: 'Brussels, Belgium',
-    type: 'Remote',
+    id: 'youtube-content',
+    company: 'YouTube / Digital Content',
+    role: 'Content Creator',
+    period: '2025 – Present',
+    location: 'Karachi, Pakistan',
+    type: 'Digital Content',
+    status: 'Current',
+    statusType: 'remote',
+    description:
+      'Creates short-form educational and kids-focused video content for YouTube.',
+    highlights: [
+      'Develops story ideas and scripts',
+      'Creates thumbnails, titles, and descriptions',
+      'Uses AI tools for content ideation, visual creation, and video production',
+      'Focuses on simple, engaging, and audience-friendly content',
+    ],
+    techStack: ['YouTube Shorts', 'Scriptwriting', 'AI-Assisted Content', 'Video Content'],
+  },
+  {
+    id: 'heaven-technologies',
+    company: 'Heaven Technologies',
+    role: 'Intern',
+    period: '3 Months',
+    location: 'Karachi, Pakistan',
+    type: 'Internship',
     status: 'Completed',
     statusType: 'remote',
     description:
-      'Built scalable SaaS applications and modern business interfaces using React.js, Next.js, TypeScript, and Tailwind CSS.',
+      'Edited promotional videos for game apps and designed client brand logos.',
     highlights: [
-      'Built scalable web applications using React.js and Next.js',
-      'Developed responsive and pixel-perfect user interfaces',
-      'Integrated REST APIs and third-party services',
-      'Built reusable and maintainable UI components',
-      'Worked with TypeScript and Tailwind CSS',
-      'Improved frontend performance and scalability',
-      'Collaborated with backend and product teams',
+      'Edited promotional game-app videos using CapCut Pro',
+      'Designed brand logos for clients using Canva',
     ],
-    techStack: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS', 'REST APIs', 'Git'],
+    techStack: ['CapCut Pro', 'Canva', 'Video Editing', 'Logo Design'],
   },
 ];
 
@@ -70,10 +80,10 @@ export default function Experience() {
     <section id="experience" className="py-20 bg-background relative overflow-hidden">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          label="Career"
+          label="Work History"
           title="Professional"
           highlight="Experience"
-          subtitle="Where I've worked and the impact I've made."
+          subtitle="Content creation, design, and tutoring experience from my CV."
         />
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">

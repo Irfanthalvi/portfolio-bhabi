@@ -6,7 +6,6 @@ import {
   Code2,
   Layout,
   Layers,
-  Database,
   Zap,
 } from 'lucide-react';
 
@@ -17,181 +16,173 @@ import { Badge } from '@/components/ui/badge';
 interface SkillItem {
   name: string;
   category:
-  | 'frontend'
-  | 'frameworks'
-  | 'state'
-  | 'forms'
-  | 'backend'
-  | 'tools';
+  | 'content'
+  | 'video'
+  | 'design'
+  | 'teaching'
+  | 'professional';
   categoryLabel: string;
-  level: 'Expert' | 'Advanced' | 'Proficient';
+  level: 'CV-listed';
   tags: string[];
 }
 
 const categories = [
-  { id: 'all', label: 'All Technologies' },
-  { id: 'frontend', label: 'Frontend Core' },
-  { id: 'frameworks', label: 'Frameworks & Libraries' },
-  { id: 'state', label: 'State & Data' },
-  { id: 'forms', label: 'Forms & Validation' },
-  { id: 'backend', label: 'Backend Services' },
-  { id: 'tools', label: 'Tools' },
+  { id: 'all', label: 'All Skills' },
+  { id: 'content', label: 'Content Creation' },
+  { id: 'video', label: 'Video & Editing' },
+  { id: 'design', label: 'Design' },
+  { id: 'teaching', label: 'Teaching' },
+  { id: 'professional', label: 'Professional Skills' },
 ];
 
 const skillsList: SkillItem[] = [
   {
-    name: 'HTML5',
-    category: 'frontend',
-    categoryLabel: 'Frontend Core',
-    level: 'Expert',
-    tags: ['Semantic HTML', 'Accessibility', 'SEO'],
+    name: 'Social Media Content Creation',
+    category: 'content',
+    categoryLabel: 'Content Creation',
+    level: 'CV-listed',
+    tags: ['YouTube Shorts', 'Digital Content'],
   },
   {
-    name: 'CSS3',
-    category: 'frontend',
-    categoryLabel: 'Frontend Core',
-    level: 'Expert',
-    tags: ['Flexbox', 'CSS Grid', 'Animations'],
+    name: 'YouTube Shorts',
+    category: 'content',
+    categoryLabel: 'Content Creation',
+    level: 'CV-listed',
+    tags: ['Short-Form Video', 'Audience-Friendly'],
   },
   {
-    name: 'JavaScript (ES6+)',
-    category: 'frontend',
-    categoryLabel: 'Frontend Core',
-    level: 'Expert',
-    tags: ['Async/Await', 'DOM APIs', 'ES Modules'],
+    name: 'YouTube Video Content',
+    category: 'content',
+    categoryLabel: 'Content Creation',
+    level: 'CV-listed',
+    tags: ['Educational', 'Kids-Focused'],
   },
   {
-    name: 'TypeScript',
-    category: 'frontend',
-    categoryLabel: 'Frontend Core',
-    level: 'Expert',
-    tags: ['Type Safety', 'Generics', 'Interfaces'],
+    name: 'AI-Assisted Content Creation',
+    category: 'content',
+    categoryLabel: 'Content Creation',
+    level: 'CV-listed',
+    tags: ['Content Ideas', 'Visual Creation', 'Video Production'],
   },
   {
-    name: 'React.js',
-    category: 'frameworks',
-    categoryLabel: 'Frameworks',
-    level: 'Expert',
-    tags: ['Hooks', 'Context API', 'Performance'],
+    name: 'Video Editing',
+    category: 'video',
+    categoryLabel: 'Video & Editing',
+    level: 'CV-listed',
+    tags: ['CapCut Pro', 'Promotional Videos'],
   },
   {
-    name: 'Next.js',
-    category: 'frameworks',
-    categoryLabel: 'Frameworks',
-    level: 'Expert',
-    tags: ['App Router', 'SSR / SSG', 'API Routes'],
+    name: 'CapCut Pro',
+    category: 'video',
+    categoryLabel: 'Video & Editing',
+    level: 'CV-listed',
+    tags: ['Video Editing', 'Game App Promos'],
   },
   {
-    name: 'Tailwind CSS',
-    category: 'frameworks',
-    categoryLabel: 'Frameworks',
-    level: 'Expert',
-    tags: ['Utility-First', 'Custom Config', 'Responsive'],
+    name: 'Canva',
+    category: 'design',
+    categoryLabel: 'Design',
+    level: 'CV-listed',
+    tags: ['Logo Design', 'Graphic Design'],
   },
   {
-    name: 'Redux Toolkit',
-    category: 'state',
-    categoryLabel: 'State & Data',
-    level: 'Advanced',
-    tags: ['Slices', 'RTK Query', 'Middleware'],
+    name: 'Logo & Graphic Design',
+    category: 'design',
+    categoryLabel: 'Design',
+    level: 'CV-listed',
+    tags: ['Canva', 'Brand Logos'],
   },
   {
-    name: 'Context API',
-    category: 'state',
-    categoryLabel: 'State & Data',
-    level: 'Advanced',
-    tags: ['Provider Pattern', 'Global State', 'Hooks'],
+    name: 'Creative Writing & Storytelling',
+    category: 'content',
+    categoryLabel: 'Content Creation',
+    level: 'CV-listed',
+    tags: ['Story Ideas', 'Engaging Content'],
   },
   {
-    name: 'REST APIs',
-    category: 'state',
-    categoryLabel: 'State & Data',
-    level: 'Expert',
-    tags: ['Fetch / Axios', 'Data Fetching', 'Error Handling'],
+    name: 'Scriptwriting',
+    category: 'content',
+    categoryLabel: 'Content Creation',
+    level: 'CV-listed',
+    tags: ['Stories', 'Video Scripts'],
   },
   {
-    name: 'React Hook Form',
-    category: 'forms',
-    categoryLabel: 'Forms & Validation',
-    level: 'Advanced',
-    tags: ['Form State', 'Validation', 'Performance'],
+    name: 'Thumbnails, Titles & Descriptions',
+    category: 'content',
+    categoryLabel: 'Content Creation',
+    level: 'CV-listed',
+    tags: ['YouTube Content', 'Audience-Friendly'],
   },
   {
-    name: 'Zod',
-    category: 'forms',
-    categoryLabel: 'Forms & Validation',
-    level: 'Advanced',
-    tags: ['Schema Validation', 'Type Inference', 'Parsing'],
+    name: 'Physics & Mathematics Teaching',
+    category: 'teaching',
+    categoryLabel: 'Teaching',
+    level: 'CV-listed',
+    tags: ['Primary Students', 'Concept Clarity'],
   },
   {
-    name: 'Firebase',
-    category: 'backend',
-    categoryLabel: 'Backend Services',
-    level: 'Advanced',
-    tags: ['Firestore', 'Authentication', 'Storage'],
+    name: 'Interactive Primary Tutoring',
+    category: 'teaching',
+    categoryLabel: 'Teaching',
+    level: 'CV-listed',
+    tags: ['Customized Tests', 'Student Feedback'],
   },
   {
-    name: 'Supabase',
-    category: 'backend',
-    categoryLabel: 'Backend Services',
-    level: 'Advanced',
-    tags: ['Postgres DB', 'Auth Flow', 'Realtime'],
+    name: 'Adapting to Individual Needs',
+    category: 'teaching',
+    categoryLabel: 'Teaching',
+    level: 'CV-listed',
+    tags: ['Learning Support', 'Clear Communication'],
   },
   {
-    name: 'Git',
-    category: 'tools',
-    categoryLabel: 'Tools',
-    level: 'Expert',
-    tags: ['Version Control', 'Branching', 'Merge'],
+    name: 'Research & Learning',
+    category: 'professional',
+    categoryLabel: 'Professional Skills',
+    level: 'CV-listed',
+    tags: ['Digital Trends', 'Quick Learner'],
   },
   {
-    name: 'GitHub',
-    category: 'tools',
-    categoryLabel: 'Tools',
-    level: 'Expert',
-    tags: ['Collaboration', 'Pull Requests', 'CI/CD'],
+    name: 'Communication',
+    category: 'professional',
+    categoryLabel: 'Professional Skills',
+    level: 'CV-listed',
+    tags: ['Teaching', 'Feedback'],
   },
 ];
 
 const engineeringHighlights = [
   {
     icon: Zap,
-    title: 'Performance & Optimization',
-    desc: 'Code-splitting with React Lazy & Suspense, dynamic imports, optimized rendering, and responsive UIs across all devices.',
+    title: 'Short-Form Video',
+    desc: 'Creates educational and kids-focused YouTube videos and edits promotional game-app videos with CapCut Pro.',
   },
   {
     icon: Layout,
-    title: 'Pixel-Perfect UI',
-    desc: 'Translating Figma designs into clean, responsive, and fully accessible components using Tailwind CSS and modern layout techniques.',
+    title: 'Creative Content',
+    desc: 'Develops story ideas, scripts, thumbnails, titles, and descriptions for simple, engaging video content.',
   },
   {
     icon: Layers,
-    title: 'Scalable Frontend Architecture',
-    desc: 'Clean component trees, reusable modules, proper TypeScript types, and maintainable state management patterns.',
+    title: 'Canva Design',
+    desc: 'Creates client logos and graphic designs using Canva.',
   },
   {
-    icon: Database,
-    title: 'API Integration & Auth',
-    desc: 'REST API communication, Firebase & Supabase integration, authentication workflows, and form validation with React Hook Form & Zod.',
+    icon: Code2,
+    title: 'Teaching & Communication',
+    desc: 'Tutors primary students with interactive lessons, concept-focused teaching, customized tests, and feedback.',
   },
 ];
 
-const levelStyles: Record<string, string> = {
-  Expert:
-    'text-primary bg-primary/10 border border-primary/30',
-  Advanced:
-    'text-cyan-400 bg-cyan-400/10 border border-cyan-400/30',
-  Proficient:
-    'text-violet-400 bg-violet-400/10 border border-violet-400/30',
+const levelStyles: Record<SkillItem['level'], string> = {
+  'CV-listed': 'text-primary bg-primary/10 border border-primary/30',
 };
 
 const categoryIcon: Record<string, ReactNode> = {
-  frontend: <Code2 size={13} className="text-primary" />,
-  frameworks: <Layout size={13} className="text-primary" />,
-  state: <Database size={13} className="text-primary" />,
-  forms: <Layers size={13} className="text-primary" />,
-  backend: <Database size={13} className="text-primary" />,
-  tools: <Code2 size={13} className="text-primary" />,
+  content: <Code2 size={13} className="text-primary" />,
+  video: <Zap size={13} className="text-primary" />,
+  design: <Layout size={13} className="text-primary" />,
+  teaching: <Layers size={13} className="text-primary" />,
+  professional: <Code2 size={13} className="text-primary" />,
 };
 
 export default function Skills() {
@@ -256,10 +247,10 @@ export default function Skills() {
         ================================================= */}
 
         <SectionHeader
-          label="Tech Stack"
+          label="Skills"
           title="Skills &"
-          highlight="Technologies"
-          subtitle="Technologies I use to build modern, scalable web applications."
+          highlight="Expertise"
+          subtitle="Content creation, design, video editing, teaching, and communication skills from my CV."
         />
 
         {/* =================================================
@@ -363,7 +354,7 @@ export default function Skills() {
             />
 
             <h3 className="text-2xl font-extrabold tracking-tight text-foreground">
-              Core Engineering Strengths
+              Core Strengths
             </h3>
           </div>
 

@@ -6,9 +6,7 @@ import {
   Trophy,
   Medal,
   Star,
-  BookOpen,
   Award,
-  CheckCircle2,
 } from 'lucide-react';
 
 import SectionHeader from './SectionHeader';
@@ -30,7 +28,7 @@ interface EducationItem {
   id: string;
   degree: string;
   institution: string;
-  board: string;
+  board?: string;
   period: string;
   location: string;
   status: 'Completed' | 'In Progress';
@@ -42,83 +40,39 @@ interface EducationItem {
 
 const educationData: EducationItem[] = [
   {
-    id: 'fsc',
-    degree: 'FSc — Computer Science (Part I & II)',
-    institution: 'Islamabad Model College',
-    board: 'Federal Board of Intermediate Education (FBISE), Islamabad',
-    period: '2020 – 2022',
-    location: 'Islamabad, Pakistan',
+    id: 'bsc-physics',
+    degree: 'Bachelor of Science in Physics',
+    institution: 'Federal Urdu University',
+    period: '2021 – 2025',
+    location: 'Karachi, Pakistan',
     status: 'Completed',
     statusClass: 'completed',
-
-    description:
-      'Completed FSc Computer Science with distinction from FBISE Islamabad, securing 1st position in both 11th and 12th Grade and earning multiple merit certificates from the college.',
-
-    achievements: [
-      {
-        icon: Trophy,
-        text: '1st Position — FSc Part I (11th Grade), FBISE Islamabad',
-      },
-      {
-        icon: Trophy,
-        text: '1st Position — FSc Part II (12th Grade), FBISE Islamabad',
-      },
-      {
-        icon: Star,
-        text: 'Merit Certificate for Academic Excellence — Federal Govt College',
-      },
-      {
-        icon: Medal,
-        text: 'Certificate of Achievement — Top Performer of the Batch',
-      },
-    ],
-
-    certificates: [
-      'FBISE Merit Certificate — Part I',
-      'FBISE Merit Certificate — Part II',
-      'Certificate of Excellence',
-      'Certificate of Achievement',
-    ],
+    achievements: [],
+    certificates: [],
   },
-
   {
-    id: 'bs',
-    degree: 'BS — Software Engineering',
-    institution: 'Virtual University of Pakistan',
-    board: 'Higher Education Commission (HEC) Recognized',
-    period: '2023 – 2027 (Expected)',
-    location: 'Pakistan',
-    status: 'In Progress',
-    statusClass: 'ongoing',
-
+    id: 'secondary-school',
+    degree: 'Secondary School',
+    institution: 'Government Degree College for Women, Block M, North Nazimabad',
+    period: '2019 – 2020',
+    location: 'Karachi, Pakistan',
+    status: 'Completed',
+    statusClass: 'completed',
+    achievements: [],
+    certificates: [],
+  },
+  {
+    id: 'electronics-fundamentals',
+    degree: 'Electronics Fundamentals Course',
+    institution: 'Creative Institute',
+    period: '2024 (3 months)',
+    location: 'Karachi, Pakistan',
+    status: 'Completed',
+    statusClass: 'completed',
     description:
-      "Currently pursuing a 4-year Bachelor's in Software Engineering, focusing on web technologies, software architecture, data structures, and full-stack development.",
-
-    achievements: [
-      {
-        icon: BookOpen,
-        text: 'Core focus on Software Engineering & Modern Web Technologies',
-      },
-      {
-        icon: CheckCircle2,
-        text: 'Applying academic knowledge in real production projects simultaneously',
-      },
-      {
-        icon: Star,
-        text: '2+ years of professional frontend experience running alongside studies',
-      },
-      {
-        icon: Award,
-        text: 'Consistent performance combining industry work with university coursework',
-      },
-    ],
-
-    certificates: [
-      'Enrolled — BS Software Engineering',
-      'HEC-Recognized Program',
-      'Virtual University of Pakistan',
-      'Expected Graduation: 2027',
-    ],
+      'Completed a three-month course covering fundamental electronics concepts, practical experiments, and demonstrations.',
+    achievements: [],
+    certificates: ['Electronics Fundamentals Course'],
   },
 ];
 
@@ -154,8 +108,8 @@ export default function Education() {
         <SectionHeader
           label="Academic Background"
           title="Education &"
-          highlight="Achievements"
-          subtitle="Combining strong academic foundations with real-world production experience in modern frontend development."
+          highlight="Certification"
+          subtitle="Physics graduate with secondary education and an electronics fundamentals course."
         />
 
         {/* Education Cards */}
@@ -289,9 +243,11 @@ export default function Education() {
                     {edu.institution}
                   </p>
 
-                  <p className="mb-3 text-[0.78rem] font-medium leading-snug text-muted-foreground">
-                    {edu.board}
-                  </p>
+                  {edu.board && (
+                    <p className="mb-3 text-[0.78rem] font-medium leading-snug text-muted-foreground">
+                      {edu.board}
+                    </p>
+                  )}
 
                   {/* Meta */}
                   <div className="flex flex-wrap gap-2">

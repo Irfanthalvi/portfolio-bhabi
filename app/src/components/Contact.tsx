@@ -1,5 +1,4 @@
-import { Mail, Send, Clock, CheckCircle2 } from 'lucide-react';
-import { GithubIcon, WhatsappIcon, LinkedinIcon } from './Icons';
+import { Mail, Send, MapPin, Phone, CheckCircle2 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -15,7 +14,7 @@ export default function Contact() {
           label="Get in Touch"
           title="Let's Work"
           highlight="Together"
-          subtitle="Have a project in mind? I'd love to hear about it."
+          subtitle="For remote social media roles or content creation opportunities, get in touch."
         />
 
         {/* 2-Column Equal Size & Shape Grid */}
@@ -34,14 +33,13 @@ export default function Contact() {
               </div>
 
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
-                Feel free to reach out via email, LinkedIn, GitHub, or WhatsApp. 
-                I&apos;m open to discussing new projects, remote positions, and frontend engineering opportunities.
+                Reach out by email or phone. I&apos;m seeking a remote social media role and welcome content creation opportunities.
               </p>
 
               {/* Direct Channels */}
               <div className="flex flex-col gap-3">
                 <a
-                  href="mailto:irfanthalvi@gmail.com"
+                  href="mailto:rubab1668@gmail.com"
                   className="group flex items-center gap-4 rounded-xl border border-border/60 bg-background/50 p-3.5 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:translate-x-1"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -54,79 +52,53 @@ export default function Contact() {
                       Email
                     </span>
                     <span className="block text-xs sm:text-sm font-semibold text-foreground truncate group-hover:text-primary transition-colors">
-                      irfanthalvi@gmail.com
+                      rubab1668@gmail.com
                     </span>
                   </div>
                 </a>
 
                 <a
-                  href="https://www.linkedin.com/in/irfan-ali-66205a2b3"
+                  href="tel:+923468074658"
                   className="group flex items-center gap-4 rounded-xl border border-border/60 bg-background/50 p-3.5 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:translate-x-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary shrink-0 transition-transform group-hover:scale-105 shadow-[0_0_8px_var(--color-accent-glow)]">
-                    <LinkedinIcon size={18} />
+                    <Phone size={18} />
                   </div>
                   <div className="min-w-0">
                     <span className="block text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
-                      LinkedIn
+                      Phone / WhatsApp
                     </span>
                     <span className="block text-xs sm:text-sm font-semibold text-foreground truncate group-hover:text-primary transition-colors">
-                      linkedin.com/in/irfan-ali-66205a2b3
+                      +92 346 807 4658
                     </span>
                   </div>
                 </a>
 
-                <a
-                  href="https://github.com/Irfanthalvi"
-                  className="group flex items-center gap-4 rounded-xl border border-border/60 bg-background/50 p-3.5 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:translate-x-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary shrink-0 transition-transform group-hover:scale-105 shadow-[0_0_8px_var(--color-accent-glow)]">
-                    <GithubIcon size={18} />
+                <div className="flex items-center gap-4 rounded-xl border border-border/60 bg-background/50 p-3.5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary shrink-0 shadow-[0_0_8px_var(--color-accent-glow)]">
+                    <MapPin size={18} />
                   </div>
                   <div className="min-w-0">
                     <span className="block text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
-                      GitHub
+                      Location
                     </span>
-                    <span className="block text-xs sm:text-sm font-semibold text-foreground truncate group-hover:text-primary transition-colors">
-                      github.com/Irfanthalvi
-                    </span>
-                  </div>
-                </a>
-
-                <a
-                  href="https://wa.me/923337484980?text=Hi%20I%20want%20to%20connect%20with%20you"
-                  className="group flex items-center gap-4 rounded-xl border border-border/60 bg-background/50 p-3.5 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:translate-x-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary shrink-0 transition-transform group-hover:scale-105 shadow-[0_0_8px_var(--color-accent-glow)]">
-                    <WhatsappIcon size={18} />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
-                      WhatsApp / Call
-                    </span>
-                    <span className="block text-xs sm:text-sm font-semibold text-foreground truncate group-hover:text-primary transition-colors">
-                      +92 333 7484980
+                    <span className="block text-xs sm:text-sm font-semibold text-foreground truncate">
+                      Karachi, Pakistan
                     </span>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
 
             {/* Left Card Bottom Info */}
             <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4 text-xs text-muted-foreground">
               <div className="flex items-center gap-1.5">
-                <Clock size={14} className="text-primary" />
-                <span>Quick response within 24 hours</span>
+                <MapPin size={14} className="text-primary" />
+                <span>Karachi, Pakistan</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={14} className="text-emerald-400" />
-                <span>100% Job Success</span>
+                <span>Seeking Remote Roles</span>
               </div>
             </div>
           </Card>
@@ -141,7 +113,7 @@ export default function Contact() {
                 Fill out the form below and I&apos;ll get back to you as soon as possible.
               </p>
 
-              <form action="https://formsubmit.co/irfanthalvi@gmail.com" method="POST" className="flex flex-col gap-4">
+              <form action="https://formsubmit.co/rubab1668@gmail.com" method="POST" className="flex flex-col gap-4">
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
 
@@ -181,7 +153,7 @@ export default function Contact() {
                     type="text"
                     id="contact-subject"
                     name="subject"
-                    placeholder="Project Inquiry / Frontend Development"
+                    placeholder="Remote Social Media Role / Content Creation"
                     required
                   />
                 </div>
@@ -193,7 +165,7 @@ export default function Contact() {
                   <Textarea
                     id="contact-message"
                     name="message"
-                    placeholder="Tell me about your project, timeline, and goals..."
+                    placeholder="Tell me about the role or content opportunity..."
                     rows={4}
                     required
                   />

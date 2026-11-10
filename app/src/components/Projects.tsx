@@ -1,9 +1,8 @@
 import type { ReactNode } from 'react';
 import {
   ExternalLink,
-  FileText,
-  IceCreamBowl,
-  LayoutDashboard,
+  Clapperboard,
+  Palette,
 } from 'lucide-react';
 
 import SectionHeader from './SectionHeader';
@@ -24,69 +23,50 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'Ice Pop Product Selling Dashboard',
-    category: 'E-Commerce Dashboard',
+    title: 'Educational & Kids-Focused YouTube Content',
+    category: 'Digital Content',
     description:
-      'A modern product selling dashboard for managing ice pop products with a clean interface, responsive layout, and interactive product management experience.',
+      'Short-form educational and kids-focused video content created for YouTube, from story ideas and scripts to thumbnails, titles, and descriptions.',
     highlights: [
-      'Product selling and management interface',
-      'Modern responsive dashboard UI',
-      'Clean product-focused user experience',
-      'Fully responsive across all devices',
+      'Creates short-form video content for YouTube',
+      'Develops story ideas and scripts',
+      'Creates thumbnails, titles, and descriptions',
+      'Uses AI tools for ideation, visuals, and production',
     ],
-    technologies: [
-      'React.js',
-      'TypeScript',
-      'Tailwind CSS',
-      'Responsive UI',
-    ],
-    icon: <IceCreamBowl size={22} />,
-    projectUrl: 'https://lush-crush.vercel.app/',
-    linkLabel: 'Live Demo',
+    technologies: ['YouTube Shorts', 'Scriptwriting', 'AI-Assisted Content', 'Video Production'],
+    icon: <Clapperboard size={22} />,
+    projectUrl: 'mailto:rubab1668@gmail.com?subject=YouTube%20Content',
+    linkLabel: 'Discuss This Work',
   },
-
   {
-    title: 'Invoice Generator Dashboard',
-    category: 'SaaS & Enterprise Tools',
+    title: 'Game-App Promotional Videos',
+    category: 'Video Editing',
     description:
-      'A modern invoice management dashboard with CRUD functionality, backend/API integration, responsive UI, and PDF invoice generation.',
+      'Promotional videos for game apps edited during a three-month internship at Heaven Technologies.',
     highlights: [
-      'Full CRUD operations for invoice management',
-      'Backend / REST API integration',
-      'PDF invoice generation and export',
-      'Responsive dashboard UI',
+      'Edited game-app promotional videos',
+      'Used CapCut Pro for video editing',
+      'Completed a three-month internship',
     ],
-    technologies: [
-      'Next.js',
-      'TypeScript',
-      'REST API',
-      'CRUD',
-    ],
-    icon: <FileText size={22} />,
-    projectUrl: 'https://invoice-form-three.vercel.app/',
-    linkLabel: 'Live Demo',
+    technologies: ['CapCut Pro', 'Video Editing', 'Promotional Content'],
+    icon: <Clapperboard size={22} />,
+    projectUrl: 'mailto:rubab1668@gmail.com?subject=Promotional%20Video%20Work',
+    linkLabel: 'Discuss This Work',
   },
-
   {
-    title: 'School Management System',
-    category: 'Admin Dashboard',
+    title: 'Canva Logo & Graphic Design',
+    category: 'Graphic Design',
     description:
-      'A responsive school management and admin dashboard with analytics, user management, reusable components, and a modern dashboard interface.',
+      'Brand logos designed for clients using Canva during an internship at Heaven Technologies.',
     highlights: [
-      'Analytics & reporting dashboard',
-      'User management interface',
-      'Reusable component architecture',
-      'Modern admin dashboard UI',
+      'Designed brand logos for clients',
+      'Created designs using Canva',
+      'Completed as part of a three-month internship',
     ],
-    technologies: [
-      'Next.js',
-      'Tailwind CSS',
-      'TypeScript',
-      'shadcn/ui',
-    ],
-    icon: <LayoutDashboard size={22} />,
-    projectUrl: 'https://shadcn-lms-dev-afif.vercel.app/',
-    linkLabel: 'Live Demo',
+    technologies: ['Canva', 'Logo Design', 'Graphic Design'],
+    icon: <Palette size={22} />,
+    projectUrl: 'mailto:rubab1668@gmail.com?subject=Logo%20Design%20Work',
+    linkLabel: 'Discuss This Work',
   },
 ];
 
@@ -103,8 +83,8 @@ export default function Projects() {
         <SectionHeader
           label="Portfolio"
           title="Featured"
-          highlight="Projects"
-          subtitle="Real-world applications I've built using modern frontend technologies."
+          highlight="Work"
+          subtitle="Highlights from my content creation, video editing, and design experience."
         />
 
         {/* =================================================

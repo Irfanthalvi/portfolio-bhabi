@@ -5,21 +5,21 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
 const focusAreas = [
-  'React.js & Next.js Applications',
-  'TypeScript Development',
-  'SaaS Dashboard Frontends',
-  'Admin Panel Interfaces',
-  'CRM Frontend Systems',
-  'API Integration & Data Management',
-  'Responsive UI Development',
-  'Existing Project Improvements',
+  'Social Media Content Creation',
+  'YouTube Shorts & Video Content',
+  'Video Editing with CapCut Pro',
+  'Canva Logo & Graphic Design',
+  'AI-Assisted Content Creation',
+  'Creative Writing & Storytelling',
+  'Scriptwriting, Thumbnails & Titles',
+  'Primary Student Tutoring',
 ];
 
-const clientFeedback = [
-  'Reliable',
-  'Clear Communicator',
-  'Committed to Quality',
-  'Detail Oriented',
+const professionalStrengths = [
+  'Quick Learner',
+  'Creative',
+  'Strong Communication',
+  'Audience-Friendly Content',
 ];
 
 export default function Freelance() {
@@ -27,23 +27,20 @@ export default function Freelance() {
     <section id="freelance" className="py-20 bg-background relative">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          label="Freelance"
-          title="Available for"
-          highlight="Freelance Projects"
-          subtitle="I partner with startups and businesses to deliver quality frontend solutions."
+          label="Opportunities"
+          title="Open to"
+          highlight="Remote Roles"
+          subtitle="Seeking a remote social media role focused on content creation."
         />
 
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Main Card */}
           <Card className="lg:col-span-8 border-border/80 bg-card/60 p-6 sm:p-8 rounded-2xl backdrop-blur-md">
             <p className="text-base sm:text-lg text-foreground/90 leading-relaxed mb-3">
-              I work with startups and businesses to build modern React.js and
-              Next.js applications — SaaS dashboards, admin panels, CRM
-              interfaces, and API-integrated frontend systems.
+              I create short-form educational and kids-focused video content, develop scripts and story ideas, and edit promotional videos using CapCut Pro.
             </p>
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
-              Available for freelance projects through Upwork with a focus on
-              delivering reliable, high-quality frontend solutions.
+              My experience also includes Canva logo design and tutoring primary students in Physics and Mathematics.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {focusAreas.map((area) => (
@@ -64,20 +61,20 @@ export default function Freelance() {
             <Card className="border-border/80 bg-card/60 p-6 rounded-2xl backdrop-blur-md text-center">
               <div className="mb-2 flex items-center justify-center gap-2">
                 <Star size={22} className="text-amber-400 fill-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-                <span className="text-2xl font-black text-foreground">5.0 / 5</span>
+                <span className="text-2xl font-black text-foreground">Remote</span>
               </div>
               <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">
-                Client Rating on Upwork
+                Preferred Work Setup
               </p>
             </Card>
 
             {/* Feedback Card */}
             <Card className="border-border/80 bg-card/60 p-6 rounded-2xl backdrop-blur-md">
               <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">
-                Client Feedback
+                Professional Strengths
               </h4>
               <div className="flex flex-wrap gap-2">
-                {clientFeedback.map((item) => (
+                {professionalStrengths.map((item) => (
                   <Badge
                     key={item}
                     variant="cyan"
@@ -98,7 +95,7 @@ export default function Freelance() {
             >
               <a href="#contact">
                 <ArrowUpRight size={18} />
-                Discuss a Project
+                Contact Me
               </a>
             </Button>
           </div>

@@ -10,7 +10,7 @@ const navLinks = [
   { href: '#skills', label: 'Skills' },
   { href: '#experience', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
-  { href: '#freelance', label: 'Freelance' },
+  { href: '#freelance', label: 'Opportunities' },
   { href: '#services', label: 'Services' },
   { href: '#education', label: 'Education' },
   { href: '#contact', label: 'Contact' },
@@ -83,7 +83,7 @@ export default function Navbar() {
           href="#home"
           className="text-2xl font-black tracking-tight text-foreground transition-colors hover:text-primary"
         >
-          Irfan
+          Rubab
           <span className="text-primary drop-shadow-[0_0_12px_var(--color-accent-glow)]">.</span>
         </a>
 

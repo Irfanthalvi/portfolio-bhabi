@@ -10,34 +10,34 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Irfan Ali | React.js & Next.js Frontend Developer',
+  title: 'Rubab Fatima | Social Media Content Creator',
   description:
-    'Frontend Developer specializing in React.js, Next.js, TypeScript, SaaS dashboards, admin panels, CRM interfaces, and responsive web applications.',
+    'Rubab Fatima is a Physics graduate and social media content creator skilled in YouTube Shorts, CapCut Pro, Canva, AI-assisted content creation, and primary tutoring.',
   keywords: [
-    'Frontend Developer',
-    'React.js',
-    'Next.js',
-    'TypeScript',
-    'SaaS Dashboard',
-    'Admin Panel',
-    'CRM',
-    'Responsive Web Applications',
-    'Irfan Ali',
+    'Social Media Content Creator',
+    'YouTube Shorts',
+    'Video Editing',
+    'CapCut Pro',
+    'Canva',
+    'AI-Assisted Content Creation',
+    'Physics Graduate',
+    'Primary Tutor',
+    'Rubab Fatima',
   ],
-  authors: [{ name: 'Irfan Ali' }],
+  authors: [{ name: 'Rubab Fatima' }],
   openGraph: {
-    title: 'Irfan Ali | React.js & Next.js Frontend Developer',
+    title: 'Rubab Fatima | Social Media Content Creator',
     description:
-      'Frontend Developer specializing in React.js, Next.js, TypeScript, SaaS dashboards, admin panels, CRM interfaces, and responsive web applications.',
+      'Physics graduate experienced in social media content creation, video editing, Canva design, and primary tutoring.',
     type: 'website',
-    locale: 'en_US',
-    siteName: 'Irfan Ali Portfolio',
+    locale: 'en_PK',
+    siteName: 'Rubab Fatima Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Irfan Ali | React.js & Next.js Frontend Developer',
+    title: 'Rubab Fatima | Social Media Content Creator',
     description:
-      'Frontend Developer specializing in React.js, Next.js, TypeScript, SaaS dashboards, admin panels, CRM interfaces, and responsive web applications.',
+      'Physics graduate experienced in social media content creation, video editing, Canva design, and primary tutoring.',
   },
   robots: {
     index: true,

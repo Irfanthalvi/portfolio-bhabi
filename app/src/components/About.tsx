@@ -4,39 +4,37 @@ import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/ca
 import { Badge } from '@/components/ui/badge';
 
 const skills = [
-  'React.js',
-  'Next.js',
-  'TypeScript',
-  'JavaScript (ES6+)',
-  'Tailwind CSS',
-  'HTML5',
-  'CSS3',
-  'Redux Toolkit',
-  'Context API',
-  'REST APIs',
-  'React Hook Form',
-  'Zod',
-  'Firebase',
-  'Supabase',
-  'Git',
-  'GitHub',
+  'Social Media Content',
+  'YouTube Shorts',
+  'Video Editing',
+  'CapCut Pro',
+  'Canva',
+  'AI-Assisted Content',
+  'Creative Writing',
+  'Storytelling',
+  'Scriptwriting',
+  'Thumbnails & Titles',
+  'Research',
+  'Communication',
+  'Physics Teaching',
+  'Mathematics Teaching',
 ];
 
 const highlights = [
   {
     icon: Code,
-    title: 'Clean & Modular Code',
-    desc: 'Reusable component architecture with proper TypeScript types, clean naming, and maintainable project structure.',
+    title: 'Social Media Content',
+    desc: 'Creates short-form educational and kids-focused YouTube content, with ideas, scripts, thumbnails, titles, and descriptions.',
   },
   {
     icon: Zap,
-    title: 'Performance Focused',
-    desc: 'Optimized rendering, lazy loading, and responsive UIs built with React best practices and modern tooling.',
+    title: 'Video Editing & Design',
+    desc: 'Edits promotional videos with CapCut Pro and creates client logos and graphics using Canva.',
   },
   {
     icon: Layers,
-    title: 'Scalable Architecture',
-    desc: 'State management with Redux Toolkit and Context API, API integration patterns, and authentication flows.',
+    title: 'Teaching & Communication',
+    desc: 'Supports primary students with clear explanations, interactive learning, customized tests, and feedback.',
   },
 ];
 
@@ -46,31 +44,20 @@ export default function About() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
           label="About Me"
-          title="Building Scalable"
-          highlight="Frontend Solutions"
-          subtitle="Focused on delivering clean, performant, and maintainable web applications."
+          title="Creative Content"
+          highlight="& Teaching"
+          subtitle="A Physics graduate with experience in digital content creation and primary tutoring."
         />
 
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left: Bio & Tech Chips */}
           <div className="flex flex-col gap-5 text-left">
             <p className="text-base sm:text-lg text-foreground/90 leading-relaxed">
-              I&apos;m <strong className="text-primary font-bold">Irfan Ali</strong>, a Frontend Developer with{' '}
-              <strong className="text-primary font-bold">3+ years of experience</strong> specializing in{' '}
-              <strong className="text-primary font-bold">React.js</strong>,{' '}
-              <strong className="text-primary font-bold">Next.js</strong>, and{' '}
-              <strong className="text-primary font-bold">TypeScript</strong>.
-              I build responsive, high-performance web applications focused on SaaS dashboards, admin panels,
-              CRM interfaces, and API-integrated business tools.
+              I&apos;m <strong className="text-primary font-bold">Rubab Fatima</strong>, a Physics graduate and creative content creator based in Karachi, Pakistan. I create short-form educational and kids-focused videos for YouTube and have worked on promotional video editing and logo design.
             </p>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              My work spans from translating Figma designs into pixel-perfect UIs to building complex state management
-              with <strong className="text-foreground">Redux Toolkit</strong>, implementing authentication flows with{' '}
-              <strong className="text-foreground">Firebase</strong> and <strong className="text-foreground">Supabase</strong>,
-              validating forms with <strong className="text-foreground">React Hook Form</strong> and{' '}
-              <strong className="text-foreground">Zod</strong>, and integrating <strong className="text-foreground">REST APIs</strong>.
-              I write clean, maintainable code and follow modern frontend development practices.
+              Since 2019, I&apos;ve tutored primary students, focusing on concept clarity and interactive learning. I use <strong className="text-foreground">CapCut Pro</strong>, <strong className="text-foreground">Canva</strong>, and AI tools for video editing, design, content ideas, and production.
             </p>
 
             {/* Tech Badges */}

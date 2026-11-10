@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ArrowUp, Mail } from 'lucide-react';
-import { GithubIcon, WhatsappIcon, LinkedinIcon } from './Icons';
+import { WhatsappIcon } from './Icons';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -16,22 +16,12 @@ const navLinks = [
 
 const socialLinks = [
   {
-    href: 'mailto:irfanthalvi@gmail.com',
+    href: 'mailto:rubab1668@gmail.com',
     icon: Mail,
     label: 'Email',
   },
   {
-    href: 'https://www.linkedin.com/in/irfan-ali-66205a2b3',
-    icon: LinkedinIcon,
-    label: 'LinkedIn',
-  },
-  {
-    href: 'https://github.com/Irfanthalvi',
-    icon: GithubIcon,
-    label: 'GitHub',
-  },
-  {
-    href: 'https://wa.me/923337484980?text=Hi%20I%20want%20to%20connect%20with%20you',
+    href: 'https://wa.me/923468074658',
     icon: WhatsappIcon,
     label: 'WhatsApp',
   },
@@ -54,10 +44,10 @@ export default function Footer() {
               href="#home"
               className="text-xl font-bold tracking-tight text-foreground transition-colors hover:text-primary"
             >
-              Irfan<span className="text-primary drop-shadow-[0_0_8px_var(--color-accent-glow)]">.</span>
+              Rubab<span className="text-primary drop-shadow-[0_0_8px_var(--color-accent-glow)]">.</span>
             </a>
             <p className="text-xs text-muted-foreground">
-              Frontend Developer specializing in React.js, Next.js &amp; TypeScript.
+              Social media content creator and Physics graduate.
             </p>
           </div>
 
@@ -110,10 +100,10 @@ export default function Footer() {
         {/* Bottom Bar: Copyright */}
         <div className="mt-6 flex flex-col items-center justify-between border-t border-border/40 pt-4 text-xs text-muted-foreground/80 sm:flex-row">
           <p>
-            &copy; {currentYear ?? 2025} <span className="font-semibold text-foreground">Irfan Ali</span>. All rights reserved.
+            &copy; {currentYear ?? 2026} <span className="font-semibold text-foreground">Rubab Fatima</span>. All rights reserved.
           </p>
           <p className="mt-2 text-muted-foreground/60 sm:mt-0">
-            Engineered with modern React, Next.js &amp; Tailwind CSS
+            Content creation, video editing &amp; teaching
           </p>
         </div>
       </div>
