@@ -28,7 +28,13 @@ export default function SectionHeader({
       <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl leading-tight">
         {title}{' '}
         {highlight && (
-          <span className="bg-gradient-to-r from-teal-500 via-cyan-400 to-teal-400 bg-clip-text text-transparent font-extrabold">
+          <span
+            className="bg-clip-text text-transparent font-extrabold"
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, var(--color-accent-dark), var(--color-accent-light), var(--color-accent))',
+            }}
+          >
             {highlight}
           </span>
         )}
@@ -38,7 +44,13 @@ export default function SectionHeader({
           {subtitle}
         </p>
       )}
-      <div className="mx-auto mt-4 h-1 w-14 rounded-full bg-gradient-to-r from-teal-500 via-cyan-400 to-emerald-500 shadow-[0_0_12px_var(--color-accent-glow)]" />
+      <div
+        className="mx-auto mt-4 h-1 w-14 rounded-full shadow-[0_0_12px_var(--color-accent-glow)]"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, var(--color-accent-dark), var(--color-accent-light), var(--color-accent))',
+        }}
+      />
     </div>
   );
 }

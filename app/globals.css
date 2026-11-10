@@ -25,40 +25,40 @@
    ============================================ */
 @layer base {
   :root {
-    /* Reference Light Mode: soft minty-white backdrop, crisp white cards, dark slate text, vibrant teal accent */
-    --background: 180 25% 97%;
-    --foreground: 195 45% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 195 45% 10%;
-    --primary: 173 100% 35%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 175 40% 92%;
-    --secondary-foreground: 195 45% 12%;
-    --muted: 180 18% 92%;
-    --muted-foreground: 195 16% 42%;
-    --accent: 173 100% 35%;
-    --accent-foreground: 0 0% 100%;
-    --border: 180 20% 86%;
-    --ring: 173 100% 35%;
+    /* Warm cream and muted bronze, inspired by the reference image */
+    --background: 34 28% 94%;
+    --foreground: 25 34% 12%;
+    --card: 36 30% 98%;
+    --card-foreground: 25 34% 12%;
+    --primary: 29 42% 40%;
+    --primary-foreground: 36 35% 97%;
+    --secondary: 31 25% 88%;
+    --secondary-foreground: 25 34% 14%;
+    --muted: 32 22% 89%;
+    --muted-foreground: 25 14% 39%;
+    --accent: 35 43% 48%;
+    --accent-foreground: 25 34% 10%;
+    --border: 30 19% 81%;
+    --ring: 35 43% 48%;
 
     /* Custom Design System Tokens (Light Mode) */
-    --color-bg-primary: #f0f7f7;
-    --color-bg-secondary: #e6f2f2;
-    --color-bg-surface: #ffffff;
-    --color-bg-card: rgba(255, 255, 255, 0.88);
-    --color-bg-card-hover: rgba(0, 168, 150, 0.06);
-    --color-border: rgba(17, 35, 41, 0.1);
-    --color-border-light: rgba(0, 168, 150, 0.25);
+    --color-bg-primary: #f3ede4;
+    --color-bg-secondary: #e8dccb;
+    --color-bg-surface: #fbf7f0;
+    --color-bg-card: rgba(251, 247, 240, 0.9);
+    --color-bg-card-hover: rgba(157, 105, 61, 0.08);
+    --color-border: rgba(62, 40, 26, 0.12);
+    --color-border-light: rgba(157, 105, 61, 0.3);
 
-    --color-text-primary: #0f2228;
-    --color-text-secondary: #3b535d;
-    --color-text-muted: #57717a;
+    --color-text-primary: #2b1d15;
+    --color-text-secondary: #5a4434;
+    --color-text-muted: #766555;
 
-    --color-accent: #00a896;
-    --color-accent-light: #06b6d4;
-    --color-accent-dark: #008274;
-    --color-accent-glow: rgba(0, 168, 150, 0.25);
-    --color-accent-subtle: rgba(0, 168, 150, 0.08);
+    --color-accent: #b68b58;
+    --color-accent-light: #d3b17f;
+    --color-accent-dark: #805331;
+    --color-accent-glow: rgba(182, 139, 88, 0.28);
+    --color-accent-subtle: rgba(182, 139, 88, 0.1);
 
     --color-success: #10b981;
     --color-warning: #f59e0b;
@@ -118,40 +118,40 @@
   }
 
   .dark {
-    /* Reference Dark Mode: deep obsidian dark teal-black, deep slate-teal cards, crisp white text, neon cyan/teal accent */
-    --background: 192 60% 4%;
-    --foreground: 180 30% 98%;
-    --card: 192 45% 8%;
-    --card-foreground: 180 30% 98%;
-    --primary: 172 100% 47%;
-    --primary-foreground: 192 60% 4%;
-    --secondary: 192 40% 12%;
-    --secondary-foreground: 180 30% 98%;
-    --muted: 192 40% 12%;
-    --muted-foreground: 192 18% 62%;
-    --accent: 172 100% 47%;
-    --accent-foreground: 192 60% 4%;
-    --border: 192 35% 16%;
-    --ring: 172 100% 47%;
+    /* Warm burgundy surfaces with soft gold accents, coordinated with light mode */
+    --background: 350 19% 15%;
+    --foreground: 32 29% 92%;
+    --card: 350 17% 20%;
+    --card-foreground: 32 29% 92%;
+    --primary: 34 48% 67%;
+    --primary-foreground: 350 22% 12%;
+    --secondary: 350 17% 25%;
+    --secondary-foreground: 32 29% 92%;
+    --muted: 350 17% 25%;
+    --muted-foreground: 28 16% 70%;
+    --accent: 34 48% 67%;
+    --accent-foreground: 350 22% 12%;
+    --border: 350 14% 32%;
+    --ring: 34 48% 67%;
 
     /* Custom Design System Tokens (Dark Mode) */
-    --color-bg-primary: #040d10;
-    --color-bg-secondary: #07151a;
-    --color-bg-surface: #0c2026;
-    --color-bg-card: rgba(11, 26, 31, 0.75);
-    --color-bg-card-hover: rgba(0, 240, 210, 0.08);
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-border-light: rgba(0, 240, 210, 0.3);
+    --color-bg-primary: #2e2022;
+    --color-bg-secondary: #3a2729;
+    --color-bg-surface: #493034;
+    --color-bg-card: rgba(61, 40, 43, 0.94);
+    --color-bg-card-hover: rgba(190, 112, 95, 0.14);
+    --color-border: rgba(238, 215, 200, 0.13);
+    --color-border-light: rgba(198, 139, 111, 0.36);
 
-    --color-text-primary: #f2fbfb;
-    --color-text-secondary: #c2d8df;
-    --color-text-muted: #8aa6af;
+    --color-text-primary: #f1e7dc;
+    --color-text-secondary: #d7c6b8;
+    --color-text-muted: #b6a397;
 
-    --color-accent: #00f0d2;
-    --color-accent-light: #38bdf8;
-    --color-accent-dark: #00c4ab;
-    --color-accent-glow: rgba(0, 240, 210, 0.3);
-    --color-accent-subtle: rgba(0, 240, 210, 0.08);
+    --color-accent: #c9a06d;
+    --color-accent-light: #dfbd8c;
+    --color-accent-dark: #a56d54;
+    --color-accent-glow: rgba(201, 160, 109, 0.26);
+    --color-accent-subtle: rgba(201, 160, 109, 0.09);
 
     --color-success: #10b981;
     --color-warning: #f59e0b;

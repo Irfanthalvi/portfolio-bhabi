@@ -21,7 +21,7 @@ const buttonVariants = cva(
         link:
           'text-primary underline-offset-4 hover:underline',
         glow:
-          'bg-gradient-to-r from-teal-600 via-teal-500 to-cyan-500 text-white font-bold shadow-[0_4px_20px_var(--color-accent-glow)] hover:shadow-[0_6px_28px_var(--color-accent-glow)] hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all',
+          'bg-gradient-to-r from-[var(--color-accent-dark)] via-[var(--color-accent)] to-[var(--color-accent-light)] text-primary-foreground font-bold shadow-[0_4px_20px_var(--color-accent-glow)] hover:shadow-[0_6px_28px_var(--color-accent-glow)] hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all',
       },
       size: {
         default: 'h-10 px-4 py-2',

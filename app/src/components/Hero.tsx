@@ -65,7 +65,7 @@ function TechSphere() {
         <icosahedronGeometry args={[1.65, 3]} />
 
         <meshBasicMaterial
-          color="#3b82f6"
+          color="#c9a06d"
           wireframe
           transparent
           opacity={0.2}
@@ -77,7 +77,7 @@ function TechSphere() {
         <icosahedronGeometry args={[1, 2]} />
 
         <meshBasicMaterial
-          color="#60a5fa"
+          color="#dfbd8c"
           wireframe
           transparent
           opacity={0.07}
@@ -89,7 +89,7 @@ function TechSphere() {
         <torusGeometry args={[2.05, 0.012, 16, 100]} />
 
         <meshBasicMaterial
-          color="#60a5fa"
+          color="#c9a06d"
           transparent
           opacity={0.3}
         />
@@ -100,7 +100,7 @@ function TechSphere() {
         <torusGeometry args={[2.35, 0.008, 16, 100]} />
 
         <meshBasicMaterial
-          color="#2563eb"
+          color="#a56d54"
           transparent
           opacity={0.2}
         />
@@ -111,7 +111,7 @@ function TechSphere() {
         <sphereGeometry args={[0.11, 32, 32]} />
 
         <meshBasicMaterial
-          color="#93c5fd"
+          color="#f1e7dc"
           transparent
           opacity={0.9}
         />
@@ -155,7 +155,7 @@ function HeroScene() {
       <pointLight
         position={[2, 2, 3]}
         intensity={1.5}
-        color="#60a5fa"
+        color="#c9a06d"
       />
 
       <TechSphere />
@@ -463,7 +463,7 @@ export default function Hero() {
 
               <a
                 href="mailto:rubab1668@gmail.com?subject=Resume%20Request"
-                className="inline-flex items-center justify-center gap-2 text-base font-bold text-white bg-gradient-to-r from-[var(--color-accent-dark)] to-[var(--color-accent)] px-7 py-3.5 rounded-full transition-all duration-300 shadow-[0_4px_20px_var(--color-accent-glow)] hover:-translate-y-[3px] hover:shadow-[0_6px_28px_var(--color-accent-glow)] hover:brightness-110"
+                className="inline-flex items-center justify-center gap-2 text-base font-bold text-primary-foreground bg-gradient-to-r from-[var(--color-accent-dark)] to-[var(--color-accent)] px-7 py-3.5 rounded-full transition-all duration-300 shadow-[0_4px_20px_var(--color-accent-glow)] hover:-translate-y-[3px] hover:shadow-[0_6px_28px_var(--color-accent-glow)] hover:brightness-110"
               >
                 <Mail size={18} />
                 Request Resume
