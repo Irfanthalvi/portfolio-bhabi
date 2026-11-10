@@ -1,15 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-import { Mail, Code2, Briefcase } from 'lucide-react';
-import {
-  WhatsappIcon,
-} from './Icons';
-
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Stars } from '@react-three/drei';
-import * as THREE from 'three';
+import { useState, useEffect } from 'react';
+import { Mail } from 'lucide-react';
+import { WhatsappIcon } from './Icons';
 
 const roles = [
   'Physics Graduate',
@@ -19,152 +12,6 @@ const roles = [
 ];
 
 /* =========================================================
-   THREE.JS — TECH SPHERE
-========================================================= */
-
-function TechSphere() {
-  const sphereRef = useRef<THREE.Mesh>(null);
-  const ringRef = useRef<THREE.Mesh>(null);
-  const ringRef2 = useRef<THREE.Mesh>(null);
-
-  useFrame((state, delta) => {
-    if (!sphereRef.current || !ringRef.current || !ringRef2.current) {
-      return;
-    }
-
-    // Main sphere rotation
-    sphereRef.current.rotation.x += delta * 0.08;
-    sphereRef.current.rotation.y += delta * 0.14;
-
-    // Rings rotation
-    ringRef.current.rotation.x += delta * 0.12;
-    ringRef.current.rotation.y += delta * 0.18;
-
-    ringRef2.current.rotation.x -= delta * 0.08;
-    ringRef2.current.rotation.z += delta * 0.15;
-
-    // Subtle mouse interaction
-    const targetX = state.pointer.y * 0.15;
-    const targetY = state.pointer.x * 0.15;
-
-    sphereRef.current.rotation.x +=
-      (targetX - sphereRef.current.rotation.x) * 0.005;
-
-    sphereRef.current.rotation.y +=
-      (targetY - sphereRef.current.rotation.y) * 0.005;
-  });
-
-  return (
-    <Float
-      speed={1}
-      rotationIntensity={0.25}
-      floatIntensity={0.4}
-    >
-      {/* Main wireframe */}
-      <mesh ref={sphereRef}>
-        <icosahedronGeometry args={[1.65, 3]} />
-
-        <meshBasicMaterial
-          color="#c9a06d"
-          wireframe
-          transparent
-          opacity={0.2}
-        />
-      </mesh>
-
-      {/* Inner sphere */}
-      <mesh scale={1.45}>
-        <icosahedronGeometry args={[1, 2]} />
-
-        <meshBasicMaterial
-          color="#dfbd8c"
-          wireframe
-          transparent
-          opacity={0.07}
-        />
-      </mesh>
-
-      {/* First orbit */}
-      <mesh ref={ringRef} rotation={[1.1, 0.2, 0]}>
-        <torusGeometry args={[2.05, 0.012, 16, 100]} />
-
-        <meshBasicMaterial
-          color="#c9a06d"
-          transparent
-          opacity={0.3}
-        />
-      </mesh>
-
-      {/* Second orbit */}
-      <mesh ref={ringRef2} rotation={[0.4, 1.1, 0]}>
-        <torusGeometry args={[2.35, 0.008, 16, 100]} />
-
-        <meshBasicMaterial
-          color="#a56d54"
-          transparent
-          opacity={0.2}
-        />
-      </mesh>
-
-      {/* Center */}
-      <mesh>
-        <sphereGeometry args={[0.11, 32, 32]} />
-
-        <meshBasicMaterial
-          color="#f1e7dc"
-          transparent
-          opacity={0.9}
-        />
-      </mesh>
-    </Float>
-  );
-}
-
-
-/* =========================================================
-   THREE.JS SCENE
-========================================================= */
-
-function HeroScene() {
-  return (
-    <Canvas
-      camera={{
-        position: [0, 0, 6],
-        fov: 45,
-      }}
-      dpr={[1, 1.5]}
-      gl={{
-        antialias: true,
-        alpha: true,
-      }}
-    >
-      {/* Stars / particles */}
-      <Stars
-        radius={7}
-        depth={5}
-        count={650}
-        factor={1.2}
-        saturation={0}
-        fade
-        speed={0.2}
-      />
-
-      {/* Light */}
-      <ambientLight intensity={0.5} />
-
-      <pointLight
-        position={[2, 2, 3]}
-        intensity={1.5}
-        color="#c9a06d"
-      />
-
-      <TechSphere />
-    </Canvas>
-  );
-}
-
-
-/* =========================================================
    HERO COMPONENT
 ========================================================= */
 
@@ -172,13 +19,6 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-
-  // Flip state
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  // Scroll progress
-  const [scrollProgress, setScrollProgress] = useState(0);
-
 
   /* =======================================================
      TYPING ANIMATION
@@ -221,11 +61,10 @@ export default function Hero() {
       isDeleting &&
       displayText === ''
     ) {
-      setIsDeleting(false);
-
-      setRoleIndex(
-        (prev) => (prev + 1) % roles.length
-      );
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % roles.length);
+      }, 0);
     }
 
     return () => clearTimeout(timer);
@@ -234,68 +73,11 @@ export default function Hero() {
     isDeleting,
     roleIndex,
   ]);
-
-
-  /* =======================================================
-     SCROLL ANIMATION
-  ======================================================= */
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      const maxScroll =
-        window.innerHeight * 0.8;
-
-      const progress = Math.min(
-        scrollY / maxScroll,
-        1
-      );
-
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener(
-      'scroll',
-      handleScroll,
-      { passive: true }
-    );
-
-    handleScroll();
-
-    return () => {
-      window.removeEventListener(
-        'scroll',
-        handleScroll
-      );
-    };
-  }, []);
-
-
-  /* =======================================================
-     SCROLL TRANSFORMS
-  ======================================================= */
-
-  const backTransform = `
-    translateY(${scrollProgress * -45}px)
-    scale(${1 + scrollProgress * 0.08})
-    rotate(${scrollProgress * 7}deg)
-  `;
-
-  const imageTransform = `
-    translateY(${scrollProgress * 12}px)
-    scale(${1 - scrollProgress * 0.025})
-  `;
-
-
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden bg-background"
-      style={{
-        paddingTop: 'calc(72px + 30px)',
-        paddingBottom: '80px',
-      }}
+      style={{ paddingTop: 'calc(72px + 24px)', paddingBottom: '56px' }}
     >
 
       {/* =================================================
@@ -325,16 +107,11 @@ export default function Hero() {
           MAIN CONTAINER
       ================================================= */}
 
-      <div className="relative z-10 mx-auto max-w-6xl w-full px-6">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
+        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] items-center gap-12">
 
-
-          {/* =================================================
-              LEFT — TEXT CONTENT
-          ================================================= */}
-
-          <div className="flex flex-col text-center lg:text-left items-center lg:items-start">
+          <div className="flex w-full flex-col items-center">
 
             {/* Available badge */}
 
@@ -379,7 +156,7 @@ export default function Hero() {
             {/* Animated Role */}
 
             <h2
-              className="font-bold text-muted-foreground mb-6 min-h-[42px] flex items-center justify-center lg:justify-start"
+              className="mb-6 flex min-h-[42px] items-center justify-center font-bold text-muted-foreground"
               style={{
                 fontSize:
                   'clamp(1.25rem, 2.8vw, 1.875rem)',
@@ -397,7 +174,7 @@ export default function Hero() {
 
             {/* Description */}
 
-            <p className="text-base text-muted-foreground leading-[1.75] mb-8 max-w-[600px]">
+            <p className="mb-8 max-w-2xl text-base leading-[1.75] text-muted-foreground">
               Physics graduate and creative content creator with experience in{' '}
 
               <strong className="text-primary font-semibold">
@@ -417,7 +194,7 @@ export default function Hero() {
                 SOCIAL LINKS
             ================================================= */}
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+            <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
 
               {[
                 {
@@ -488,7 +265,7 @@ export default function Hero() {
                 STATS
             ================================================= */}
 
-            <div className="grid grid-cols-3 gap-4 max-w-[520px] w-full">
+            <div className="grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
 
               {[
                 {
@@ -509,7 +286,7 @@ export default function Hero() {
 
                 <div
                   key={stat.label}
-                  className="bg-card/80 border border-border/60 rounded-xl px-5 py-4 backdrop-blur-sm flex flex-col items-start transition-all duration-300 hover:border-primary/40 hover:-translate-y-0.5"
+                  className="flex flex-col items-center rounded-xl border border-border/60 bg-card/80 px-4 py-4 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 sm:px-5"
                 >
 
                   <span className="text-2xl font-extrabold text-primary">
@@ -523,215 +300,6 @@ export default function Hero() {
                 </div>
 
               ))}
-
-            </div>
-
-          </div>
-
-
-          {/* =================================================
-              RIGHT — THREE.JS + FLIP CARD
-          ================================================= */}
-
-          <div className="relative hidden lg:flex justify-center items-center">
-
-            {/* =================================================
-                THREE.JS BACKGROUND
-            ================================================= */}
-
-            <div
-              className="absolute w-[500px] h-[500px] pointer-events-none transition-transform duration-100"
-              style={{
-                transform: backTransform,
-              }}
-            >
-
-              <HeroScene />
-
-            </div>
-
-
-            {/* =================================================
-                FLIP CARD CONTAINER
-            ================================================= */}
-
-            <div
-              className="relative w-[320px] h-[400px]"
-              style={{
-                perspective: '1200px',
-              }}
-            >
-
-              {/* =================================================
-                  CARD
-              ================================================= */}
-
-              <div
-                className="relative w-full h-full cursor-pointer transition-transform duration-700"
-                onClick={() =>
-                  setIsFlipped((prev) => !prev)
-                }
-                style={{
-                  transformStyle: 'preserve-3d',
-
-                  transform: isFlipped
-                    ? 'rotateY(180deg)'
-                    : 'rotateY(0deg)',
-                }}
-              >
-
-
-                {/* =================================================
-                    FRONT IMAGE
-                ================================================= */}
-
-                {/* <div
-                  className="absolute inset-0 rounded-[28px] p-[3px]"
-                  style={{
-                    backfaceVisibility: 'hidden',
-                    WebkitBackfaceVisibility: 'hidden',
-
-                    background:
-                      'linear-gradient(145deg, var(--color-accent), var(--color-border), transparent 75%)',
-
-                    boxShadow:
-                      '0 20px 50px rgba(0,0,0,0.18)',
-                  }}
-                >
-
-                  <div className="relative w-full h-full overflow-hidden rounded-[25px] bg-background">
-
-                    <Image
-                      src="/irfan-new.jpg"
-                      alt="Portfolio portrait"
-                      width={400}
-                      height={480}
-                      className="w-full h-full object-cover object-top"
-                      priority
-                    />
-
-
-
-                    <div
-                      className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-                      style={{
-                        background:
-                          'linear-gradient(to top, var(--color-background), transparent)',
-                      }}
-                    />
-
-
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-
-                      <span className="text-[10px] font-semibold text-white/80 bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full whitespace-nowrap">
-                        Click to view back
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div> */}
-
-
-                {/* =================================================
-                    BACK IMAGE
-                ================================================= */}
-
-                {/* <div
-                  className="absolute inset-0 rounded-[28px] p-[3px]"
-                  style={{
-                    backfaceVisibility: 'hidden',
-                    WebkitBackfaceVisibility: 'hidden',
-
-                    transform:
-                      'rotateY(180deg)',
-
-                    background:
-                      'linear-gradient(145deg, var(--color-accent), var(--color-border), transparent 75%)',
-
-                    boxShadow:
-                      '0 20px 50px rgba(0,0,0,0.18)',
-                  }}
-                >
-
-                  <div className="relative w-full h-full overflow-hidden rounded-[25px] bg-background">
-
-                    <Image
-                      src="/irfan-back.jpg"
-                      alt="Portfolio portrait"
-                      width={400}
-                      height={480}
-                      className="w-full h-full object-cover object-center"
-                    />
-
-
-
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background:
-                          'linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%)',
-                      }}
-                    />
-
-
-
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-
-                      <span className="text-[10px] font-semibold text-white/80 bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full whitespace-nowrap">
-                        Click to view front
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </div> */}
-
-              </div>
-
-
-              {/* =================================================
-                  FRONT BADGES
-              ================================================= */}
-
-              {!isFlipped && (
-                <>
-
-                  {/* React Badge */}
-
-                  <div className="absolute -top-4 -right-6 flex items-center gap-2 bg-background/95 border border-primary/30 text-foreground px-3.5 py-2 rounded-2xl text-xs font-bold backdrop-blur-md shadow-lg pointer-events-none">
-
-                    <Code2
-                      size={15}
-                      className="text-primary"
-                    />
-
-                    <span>
-                      CapCut Pro &amp; Canva
-                    </span>
-
-                  </div>
-
-
-                  {/* Experience Badge */}
-
-                  <div className="absolute -bottom-4 -left-6 flex items-center gap-2 bg-background/95 border border-amber-400/30 text-foreground px-3.5 py-2 rounded-2xl text-xs font-bold backdrop-blur-md shadow-lg pointer-events-none">
-
-                    <Briefcase
-                      size={15}
-                      className="text-amber-400"
-                    />
-
-                    <span>
-                      Tutor Since 2019
-                    </span>
-
-                  </div>
-
-                </>
-              )}
 
             </div>
 

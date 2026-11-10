@@ -113,26 +113,52 @@ export default function Education() {
         />
 
         {/* Education Cards */}
-        <div className="mt-10 grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
-          {educationData.map((edu) => (
+        <div className="relative mt-10 overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 sm:w-12"
+            style={{
+              background:
+                'linear-gradient(to right, var(--color-background), transparent)',
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 sm:w-12"
+            style={{
+              background:
+                'linear-gradient(to left, var(--color-background), transparent)',
+            }}
+          />
+          <div className="education-marquee flex w-max">
+            {[0, 1].map((set) => (
+              <div
+                key={set}
+                className="flex shrink-0 items-start gap-5 pr-5"
+                aria-hidden={set === 1}
+              >
+                {educationData.map((edu) => (
             <Card
-              key={edu.id}
+              key={`${set}-${edu.id}`}
               className="
                 relative
                 flex
+                w-[280px]
+                shrink-0
                 flex-col
                 overflow-hidden
-                rounded-2xl
+                rounded-xl
                 border-border/60
                 bg-card/80
-                p-6
+                p-4
                 backdrop-blur-md
                 transition-all
                 duration-300
                 hover:-translate-y-1
                 hover:border-primary/40
                 hover:shadow-[0_20px_45px_var(--color-accent-glow)]
-                sm:p-8
+                sm:w-[320px]
+                sm:p-5
               "
             >
               {/* Top Accent */}
@@ -157,21 +183,21 @@ export default function Education() {
 
               <div
                 className="
-                  mb-5
+                  mb-4
                   flex
                   items-start
-                  gap-4
+                  gap-3
                   border-b
                   border-border/60
-                  pb-5
+                  pb-4
                 "
               >
                 {/* Graduation Icon */}
                 <div
                   className="
                     flex
-                    h-[54px]
-                    w-[54px]
+                    h-10
+                    w-10
                     shrink-0
                     items-center
                     justify-center
@@ -183,7 +209,7 @@ export default function Education() {
                     shadow-[0_0_15px_var(--color-accent-glow)]
                   "
                 >
-                  <GraduationCap size={26} />
+                  <GraduationCap size={21} />
                 </div>
 
                 {/* Header Content */}
@@ -201,12 +227,12 @@ export default function Education() {
                     <h3
                       className="
                         flex-1
-                        text-[1.1rem]
+                        text-base
                         font-extrabold
                         leading-snug
                         tracking-tight
                         text-foreground
-                        sm:text-[1.15rem]
+                        sm:text-lg
                       "
                     >
                       {edu.degree}
@@ -239,7 +265,7 @@ export default function Education() {
                     </span>
                   </div>
 
-                  <p className="mb-0.5 text-sm font-bold text-primary">
+                  <p className="mb-0.5 text-xs font-bold text-primary">
                     {edu.institution}
                   </p>
 
@@ -250,7 +276,7 @@ export default function Education() {
                   )}
 
                   {/* Meta */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
                     <span
                       className="
                         inline-flex
@@ -260,9 +286,9 @@ export default function Education() {
                         border
                         border-border/60
                         bg-background
-                        px-2.5
+                        px-2
                         py-1
-                        text-[0.76rem]
+                        text-[0.68rem]
                         font-medium
                         text-muted-foreground
                       "
@@ -284,9 +310,9 @@ export default function Education() {
                         border
                         border-border/60
                         bg-background
-                        px-2.5
+                        px-2
                         py-1
-                        text-[0.76rem]
+                        text-[0.68rem]
                         font-medium
                         text-muted-foreground
                       "
@@ -309,11 +335,10 @@ export default function Education() {
               {edu.description && (
                 <p
                   className="
-                    mb-5
-                    text-[0.88rem]
+                    mb-4
+                    text-xs
                     leading-relaxed
                     text-muted-foreground
-                    sm:text-[0.9rem]
                   "
                 >
                   {edu.description}
@@ -434,8 +459,30 @@ export default function Education() {
               )}
             </Card>
           ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+      <style>{`
+        .education-marquee {
+          animation: educationScroll 70s linear infinite;
+          will-change: transform;
+        }
+
+        .education-marquee:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes educationScroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .education-marquee { animation: none; }
+        }
+      `}</style>
     </section>
   );
 }

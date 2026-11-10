@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react';
+import Image from 'next/image';
 import {
   ExternalLink,
   Clapperboard,
   Palette,
+  Gamepad2,
 } from 'lucide-react';
 
 import SectionHeader from './SectionHeader';
@@ -19,54 +21,96 @@ interface Project {
   icon: ReactNode;
   projectUrl: string;
   linkLabel: string;
+  thumbnailUrl?: string;
+  logoImages?: { src: string; alt: string }[];
+  referenceLinks?: { label: string; url: string }[];
 }
 
 const projects: Project[] = [
   {
-    title: 'Educational & Kids-Focused YouTube Content',
-    category: 'Digital Content',
+    title: 'Mobile App Promotional Video Editing',
+    category: 'App Promotion',
     description:
-      'Short-form educational and kids-focused video content created for YouTube, from story ideas and scripts to thumbnails, titles, and descriptions.',
+      'Promotional videos edited with CapCut Pro for mobile apps. The client app listings and a competitor reference are linked below.',
     highlights: [
-      'Creates short-form video content for YouTube',
-      'Develops story ideas and scripts',
-      'Creates thumbnails, titles, and descriptions',
-      'Uses AI tools for ideation, visuals, and production',
+      'Edited promotional app videos with CapCut Pro',
+      'Includes puzzle, arcade, and utility app listings',
+      'Block Blast is identified separately as a competitor reference',
     ],
-    technologies: ['YouTube Shorts', 'Scriptwriting', 'AI-Assisted Content', 'Video Production'],
-    icon: <Clapperboard size={22} />,
-    projectUrl: 'mailto:rubab1668@gmail.com?subject=YouTube%20Content',
-    linkLabel: 'Discuss This Work',
+    technologies: ['CapCut Pro', 'Video Editing', 'App Promotion'],
+    icon: <Gamepad2 size={22} />,
+    projectUrl: 'https://play.google.com/store/apps/details?id=com.sid.arrowdrift.puzzlegame',
+    linkLabel: 'Arrow Drift App',
+    referenceLinks: [
+      {
+        label: 'Our video: Arrow Puzzle app listing',
+        url: 'https://play.google.com/store/apps/details?id=com.easybrain.arrow.puzzle.game',
+      },
+      {
+        label: 'Bounzo: Panda Jump & Bounce app',
+        url: 'https://play.google.com/store/apps/details?id=com.sid.bounzo.panda.bounce',
+      },
+      {
+        label: 'Signature Maker app',
+        url: 'https://play.google.com/store/apps/details?id=com.sid.signature.maker',
+      },
+      {
+        label: 'Competitor reference: Block Blast',
+        url: 'https://play.google.com/store/search?q=block%20blast&c=apps',
+      },
+    ],
   },
   {
-    title: 'Game-App Promotional Videos',
-    category: 'Video Editing',
+    title: 'Hope Is Stronger Than Fear',
+    category: 'Motivational Story Video',
     description:
-      'Promotional videos for game apps edited during a three-month internship at Heaven Technologies.',
+      'YouTube motivational story video shared as a content sample.',
     highlights: [
-      'Edited game-app promotional videos',
-      'Used CapCut Pro for video editing',
-      'Completed a three-month internship',
+      'Story-led motivational content',
+      'Published on YouTube',
+      'Shared as a video work sample',
     ],
-    technologies: ['CapCut Pro', 'Video Editing', 'Promotional Content'],
+    technologies: ['YouTube Video', 'Storytelling', 'Video Content'],
     icon: <Clapperboard size={22} />,
-    projectUrl: 'mailto:rubab1668@gmail.com?subject=Promotional%20Video%20Work',
-    linkLabel: 'Discuss This Work',
+    projectUrl: 'https://youtu.be/x_p2KROTAkY',
+    linkLabel: 'Watch Video',
+    thumbnailUrl: 'https://i.ytimg.com/vi/x_p2KROTAkY/hqdefault.jpg',
   },
   {
-    title: 'Canva Logo & Graphic Design',
-    category: 'Graphic Design',
+    title: 'Cars Song for Kids',
+    category: 'YouTube Short',
     description:
-      'Brand logos designed for clients using Canva during an internship at Heaven Technologies.',
+      'Kids-focused YouTube Short: “Cars Song for Kids | Beep Beep Car Adventure.”',
     highlights: [
-      'Designed brand logos for clients',
-      'Created designs using Canva',
+      'Short-form kids-focused video',
+      'Simple, audience-friendly content',
+      'Shared as a YouTube work sample',
+    ],
+    technologies: ['YouTube Shorts', 'Kids Content', 'Video Content'],
+    icon: <Clapperboard size={22} />,
+    projectUrl: 'https://youtube.com/shorts/9T6UUv81IWc',
+    linkLabel: 'Watch Short',
+    thumbnailUrl: 'https://i.ytimg.com/vi/9T6UUv81IWc/hq2.jpg',
+  },
+  {
+    title: 'Janjua Services Logo Designs',
+    category: 'Brand Identity',
+    description:
+      'Three logo variations for Janjua Services, created as client branding samples.',
+    highlights: [
+      'Three logo concepts for one client brand',
+      'Designed using Canva',
       'Completed as part of a three-month internship',
     ],
     technologies: ['Canva', 'Logo Design', 'Graphic Design'],
     icon: <Palette size={22} />,
-    projectUrl: 'mailto:rubab1668@gmail.com?subject=Logo%20Design%20Work',
-    linkLabel: 'Discuss This Work',
+    projectUrl: 'mailto:rubab1668@gmail.com?subject=Logo%20Design%20Inquiry',
+    linkLabel: 'Contact for Design Work',
+    logoImages: [
+      { src: '/janjua-services-logo-1.jpeg', alt: 'Janjua Services logo with JS mark and blue swoosh' },
+      { src: '/janjua-services-logo-2.jpeg', alt: 'Janjua Services blue geometric logo variation' },
+      { src: '/janjua-services-logo-3.jpeg', alt: 'Janjua Services script logo with gold accents' },
+    ],
   },
 ];
 
@@ -84,26 +128,23 @@ export default function Projects() {
           label="Portfolio"
           title="Featured"
           highlight="Work"
-          subtitle="Highlights from my content creation, video editing, and design experience."
+          subtitle="Game-app video editing, YouTube video samples, and logo design work."
         />
 
         {/* =================================================
             PROJECTS
 
-            MOBILE / TABLET
-            -> Horizontal slow marquee
-
-            DESKTOP / LAPTOP
-            -> Normal 3-column grid
+            ALL SCREEN SIZES
+            -> Compact horizontal slow marquee
         ================================================= */}
 
         <div className="relative mt-10">
 
           {/* =================================================
-              MOBILE / TABLET MARQUEE
+              PROJECT MARQUEE
           ================================================= */}
 
-          <div className="relative overflow-hidden lg:hidden">
+          <div className="relative overflow-hidden">
 
             {/* Left Fade */}
 
@@ -115,8 +156,8 @@ export default function Projects() {
                 top-0
                 bottom-0
                 z-10
-                w-10
-                sm:w-14
+                w-8
+                sm:w-12
               "
               style={{
                 background:
@@ -134,8 +175,8 @@ export default function Projects() {
                 top-0
                 bottom-0
                 z-10
-                w-10
-                sm:w-14
+                w-8
+                sm:w-12
               "
               style={{
                 background:
@@ -152,7 +193,7 @@ export default function Projects() {
               <div className="flex shrink-0 gap-5 pr-5">
                 {projects.map((project) => (
                   <ProjectCard
-                    key={`mobile-first-${project.title}`}
+                    key={`first-${project.title}`}
                     project={project}
                   />
                 ))}
@@ -166,7 +207,7 @@ export default function Projects() {
               >
                 {projects.map((project) => (
                   <ProjectCard
-                    key={`mobile-second-${project.title}`}
+                    key={`second-${project.title}`}
                     project={project}
                   />
                 ))}
@@ -175,32 +216,16 @@ export default function Projects() {
             </div>
           </div>
 
-          {/* =================================================
-              LAPTOP / DESKTOP
-              NORMAL GRID — NO SCROLL
-          ================================================= */}
-
-          <div className="hidden lg:grid lg:grid-cols-3 gap-6">
-
-            {projects.map((project) => (
-              <ProjectCard
-                key={`desktop-${project.title}`}
-                project={project}
-              />
-            ))}
-
-          </div>
-
         </div>
       </div>
 
       {/* =================================================
-          MOBILE MARQUEE ANIMATION ONLY
+          MARQUEE ANIMATION
       ================================================= */}
 
       <style>{`
         .projects-marquee {
-          animation: projectsScroll 55s linear infinite;
+          animation: projectsScroll 70s linear infinite;
           will-change: transform;
         }
 
@@ -241,14 +266,14 @@ function ProjectCard({
     <Card
       className="
         flex
-        w-[310px]
+        w-[280px]
         shrink-0
         flex-col
         overflow-hidden
-        rounded-2xl
+        rounded-xl
         border-border/80
         bg-card/60
-        p-6
+        p-4
         backdrop-blur-md
 
         transition-all
@@ -259,27 +284,56 @@ function ProjectCard({
         hover:shadow-xl
         hover:shadow-primary/10
 
-        sm:w-[350px]
-        sm:p-7
-
-        lg:w-auto
-        lg:min-w-0
+        sm:w-[320px]
+        sm:p-5
       "
     >
+
+      {project.thumbnailUrl && (
+        <div className="relative -mx-4 -mt-4 mb-4 aspect-video overflow-hidden bg-muted sm:-mx-5 sm:-mt-5">
+          <Image
+            src={project.thumbnailUrl}
+            alt={`${project.title} video thumbnail`}
+            width={480}
+            height={360}
+            unoptimized
+            className="h-full w-full object-cover"
+          />
+        </div>
+      )}
+
+      {project.logoImages && (
+        <div className="mb-4 grid grid-cols-3 gap-2">
+          {project.logoImages.map((logo) => (
+            <div
+              key={logo.src}
+              className="flex aspect-square items-center justify-center overflow-hidden rounded-lg border border-border/50 bg-white p-1.5"
+            >
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={220}
+                height={220}
+                className="h-full w-full object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* =================================================
           HEADER
       ================================================= */}
 
-      <div className="mb-5 flex items-start gap-4">
+      <div className="mb-4 flex items-start gap-3">
 
         {/* Project Icon */}
 
         <div
           className="
             flex
-            h-12
-            w-12
+            h-10
+            w-10
             shrink-0
             items-center
             justify-center
@@ -318,7 +372,7 @@ function ProjectCard({
               leading-snug
               tracking-tight
               text-foreground
-              sm:text-xl
+              sm:text-lg
             "
           >
             {project.title}
@@ -333,57 +387,80 @@ function ProjectCard({
 
       <p
         className="
-          mb-6
+          mb-4
           text-xs
           leading-relaxed
           text-muted-foreground
-          sm:text-sm
+          sm:text-xs
         "
       >
         {project.description}
       </p>
 
+      {project.referenceLinks && (
+        <div className="mb-4 rounded-lg border border-border/50 bg-background/50 p-3">
+          <h4 className="mb-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+            App Links & References
+          </h4>
+          <ul className="flex flex-col gap-1.5">
+            {project.referenceLinks.map((link) => (
+              <li key={link.url}>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-start gap-2 text-xs font-medium leading-snug text-foreground/85 transition-colors hover:text-primary"
+                >
+                  <ExternalLink size={14} className="mt-0.5 shrink-0 text-primary" />
+                  <span>{link.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* =================================================
           HIGHLIGHTS
       ================================================= */}
 
-      <div
-        className="
-          mb-6
+      {!project.referenceLinks && (
+        <div
+          className="
+          mb-4
           flex-1
           rounded-xl
           border
           border-border/50
           bg-background/50
-          p-4
-          sm:p-5
+          p-3
         "
-      >
-        <h4
-          className="
-            mb-3
-            text-xs
+        >
+          <h4
+            className="
+            mb-2
+            text-[10px]
             font-bold
             uppercase
             tracking-wider
             text-muted-foreground
           "
-        >
-          Key Features
-        </h4>
+          >
+            Key Features
+          </h4>
 
-        <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-1.5">
 
-          {project.highlights.map((item) => (
-            <li
-              key={item}
-              className="
+            {project.highlights.map((item) => (
+              <li
+                key={item}
+                className="
                 relative
                 pl-4
                 text-xs
                 leading-relaxed
                 text-foreground/85
-                sm:text-sm
+                sm:text-xs
 
                 before:absolute
                 before:left-0
@@ -393,14 +470,15 @@ function ProjectCard({
                 before:rounded-full
                 before:bg-primary
                 before:shadow-[0_0_6px_var(--color-accent-glow)]
-              "
-            >
-              {item}
-            </li>
-          ))}
+                "
+              >
+                {item}
+              </li>
+            ))}
 
-        </ul>
-      </div>
+          </ul>
+        </div>
+      )}
 
       {/* =================================================
           FOOTER
@@ -411,26 +489,22 @@ function ProjectCard({
           mt-auto
           flex
           flex-col
-          gap-4
+          gap-2
           border-t
           border-border/60
-          pt-4
-
-          sm:flex-row
-          sm:items-center
-          sm:justify-between
+          pt-3
         "
       >
 
         {/* Technologies */}
 
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1">
 
           {project.technologies.map((tech) => (
             <Badge
               key={tech}
               variant="tech"
-              className="text-[11px] font-medium"
+              className="text-[9px] font-medium"
             >
               {tech}
             </Badge>
@@ -448,19 +522,17 @@ function ProjectCard({
             w-full
             shrink-0
             rounded-full
-            px-4
-            py-1.5
-            text-xs
+            px-3
+            py-1
+            text-[11px]
             font-bold
-
-            sm:w-auto
           "
         >
           <a
             href={project.projectUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Open ${project.title} live demo`}
+            aria-label={`${project.linkLabel}: ${project.title}`}
           >
             <span>{project.linkLabel}</span>
 
