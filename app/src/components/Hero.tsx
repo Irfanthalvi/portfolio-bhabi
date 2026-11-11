@@ -1,9 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Play, Video } from 'lucide-react';
+import { Download, Mail, Play, Video } from 'lucide-react';
 import Image from 'next/image';
-import { WhatsappIcon } from './Icons';
 
 /* =========================================================
    HERO COMPONENT
@@ -128,14 +127,13 @@ export default function Hero() {
               </div>
               <div className="flex flex-wrap items-center justify-center gap-2">
                 <a
-                  href="https://wa.me/923468074658"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
+                  href="/Rubab_Fatima_ATS_CV.docx"
+                  download="Rubab_Fatima_ATS_CV.docx"
+                  aria-label="Download CV"
                   className="inline-flex items-center gap-2 rounded-full bg-card/80 px-5 py-3 text-sm font-semibold text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
                 >
-                  <WhatsappIcon size={18} />
-                  WhatsApp
+                  <Download size={18} />
+                  Download CV
                 </a>
                 <a
                   href="mailto:rubab1668@gmail.com"
