@@ -86,34 +86,11 @@ export default function Experience() {
           subtitle="Content creation, design, and tutoring experience from my CV."
         />
 
-        <div className="relative mt-10 overflow-hidden">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 sm:w-12"
-            style={{
-              background:
-                'linear-gradient(to right, var(--color-background), transparent)',
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 sm:w-12"
-            style={{
-              background:
-                'linear-gradient(to left, var(--color-background), transparent)',
-            }}
-          />
-          <div className="experience-marquee flex w-max">
-            {[0, 1].map((set) => (
-              <div
-                key={set}
-                className="flex shrink-0 gap-5 pr-5"
-                aria-hidden={set === 1}
-              >
-                {experiences.map((exp) => (
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {experiences.map((exp) => (
             <Card
-              key={`${set}-${exp.id}`}
-              className="relative flex w-[280px] shrink-0 flex-col overflow-hidden rounded-xl border-border/60 bg-card/80 p-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_45px_var(--color-accent-glow)] sm:w-[320px] sm:p-5"
+              key={exp.id}
+              className="relative flex h-full w-full flex-col overflow-hidden rounded-xl border-border/60 bg-card/80 p-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_20px_45px_var(--color-accent-glow)] sm:p-5"
             >
               {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-60" />
@@ -189,31 +166,9 @@ export default function Experience() {
                 </div>
               </div>
             </Card>
-                ))}
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
-      <style>{`
-        .experience-marquee {
-          animation: experienceScroll 70s linear infinite;
-          will-change: transform;
-        }
-
-        .experience-marquee:hover {
-          animation-play-state: paused;
-        }
-
-        @keyframes experienceScroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .experience-marquee { animation: none; }
-        }
-      `}</style>
     </section>
   );
 }

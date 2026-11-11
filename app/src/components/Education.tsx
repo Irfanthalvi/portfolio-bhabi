@@ -113,38 +113,14 @@ export default function Education() {
         />
 
         {/* Education Cards */}
-        <div className="relative mt-10 overflow-hidden">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 sm:w-12"
-            style={{
-              background:
-                'linear-gradient(to right, var(--color-background), transparent)',
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 sm:w-12"
-            style={{
-              background:
-                'linear-gradient(to left, var(--color-background), transparent)',
-            }}
-          />
-          <div className="education-marquee flex w-max">
-            {[0, 1].map((set) => (
-              <div
-                key={set}
-                className="flex shrink-0 items-start gap-5 pr-5"
-                aria-hidden={set === 1}
-              >
-                {educationData.map((edu) => (
+        <div className="mt-10 grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {educationData.map((edu) => (
             <Card
-              key={`${set}-${edu.id}`}
+              key={edu.id}
               className="
                 relative
                 flex
-                w-[280px]
-                shrink-0
+                w-full
                 flex-col
                 overflow-hidden
                 rounded-xl
@@ -157,7 +133,6 @@ export default function Education() {
                 hover:-translate-y-1
                 hover:border-primary/40
                 hover:shadow-[0_20px_45px_var(--color-accent-glow)]
-                sm:w-[320px]
                 sm:p-5
               "
             >
@@ -459,30 +434,8 @@ export default function Education() {
               )}
             </Card>
           ))}
-              </div>
-            ))}
-          </div>
         </div>
       </div>
-      <style>{`
-        .education-marquee {
-          animation: educationScroll 70s linear infinite;
-          will-change: transform;
-        }
-
-        .education-marquee:hover {
-          animation-play-state: paused;
-        }
-
-        @keyframes educationScroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .education-marquee { animation: none; }
-        }
-      `}</style>
     </section>
   );
 }

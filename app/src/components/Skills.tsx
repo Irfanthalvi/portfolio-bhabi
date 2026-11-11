@@ -195,46 +195,6 @@ export default function Skills() {
         (skill) => skill.category === activeTab
       );
 
-  /*
-   * =========================================================
-   * ROW LOGIC
-   *
-   * 5 OR LESS  -> ONE ROW
-   * MORE THAN 5 -> TWO ROWS
-   * =========================================================
-   */
-
-  const shouldUseTwoRows = filteredSkills.length > 5;
-
-  const firstRow = shouldUseTwoRows
-    ? filteredSkills.slice(
-      0,
-      Math.ceil(filteredSkills.length / 2)
-    )
-    : filteredSkills;
-
-  const secondRow = shouldUseTwoRows
-    ? filteredSkills.slice(
-      Math.ceil(filteredSkills.length / 2)
-    )
-    : [];
-
-  const shouldEngineeringUseTwoRows =
-    engineeringHighlights.length > 5;
-
-  const firstEngineeringRow = shouldEngineeringUseTwoRows
-    ? engineeringHighlights.slice(
-      0,
-      Math.ceil(engineeringHighlights.length / 2)
-    )
-    : engineeringHighlights;
-
-  const secondEngineeringRow = shouldEngineeringUseTwoRows
-    ? engineeringHighlights.slice(
-      Math.ceil(engineeringHighlights.length / 2)
-    )
-    : [];
-
   return (
     <section
       id="skills"
@@ -310,35 +270,13 @@ export default function Skills() {
             SKILLS
         ================================================= */}
 
-        <div className="mb-16 space-y-5">
-
-          {/* FIRST ROW */}
-
-          <MarqueeRow
-            items={firstRow}
-            animationClass="skills-marquee-left"
-            renderItem={(skill) => (
+        <div className="mb-16 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {filteredSkills.map((skill) => (
               <SkillCard
                 key={skill.name}
                 skill={skill}
               />
-            )}
-          />
-
-          {/* SECOND ROW ONLY WHEN MORE THAN 5 */}
-
-          {shouldUseTwoRows && (
-            <MarqueeRow
-              items={secondRow}
-              animationClass="skills-marquee-right"
-              renderItem={(skill) => (
-                <SkillCard
-                  key={skill.name}
-                  skill={skill}
-                />
-              )}
-            />
-          )}
+          ))}
         </div>
 
         {/* =================================================
@@ -358,219 +296,17 @@ export default function Skills() {
             </h3>
           </div>
 
-          <div className="space-y-5">
-
-            {/* FIRST ENGINEERING ROW */}
-
-            <MarqueeRow
-              items={firstEngineeringRow}
-              animationClass="strength-marquee-left"
-              renderItem={(item) => (
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {engineeringHighlights.map((item) => (
                 <EngineeringCard
                   key={item.title}
                   item={item}
                 />
-              )}
-            />
-
-            {/* SECOND ENGINEERING ROW */}
-
-            {shouldEngineeringUseTwoRows && (
-              <MarqueeRow
-                items={secondEngineeringRow}
-                animationClass="strength-marquee-right"
-                renderItem={(item) => (
-                  <EngineeringCard
-                    key={item.title}
-                    item={item}
-                  />
-                )}
-              />
-            )}
-
+            ))}
           </div>
         </div>
       </div>
-
-      {/* =================================================
-          NORMAL CSS
-          No styled-jsx — avoids Next.js Server Component
-          styled-jsx errors.
-      ================================================= */}
-
-      <style>{`
-        .marquee-container {
-          position: relative;
-          width: 100%;
-          overflow: hidden;
-        }
-
-        .marquee-container::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          width: 60px;
-          z-index: 10;
-          pointer-events: none;
-          background: linear-gradient(
-            to right,
-            var(--color-background),
-            transparent
-          );
-        }
-
-        .marquee-container::after {
-          content: '';
-          position: absolute;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          width: 60px;
-          z-index: 10;
-          pointer-events: none;
-          background: linear-gradient(
-            to left,
-            var(--color-background),
-            transparent
-          );
-        }
-
-        .marquee-track {
-          display: flex;
-          width: max-content;
-        }
-
-        /*
-         * Slow animation
-         * First row moves left
-         */
-        .skills-marquee-left {
-          animation: skillsLeft 65s linear infinite;
-        }
-
-        /*
-         * Second row moves right
-         */
-        .skills-marquee-right {
-          animation: skillsRight 70s linear infinite;
-        }
-
-        /*
-         * Engineering rows
-         */
-        .strength-marquee-left {
-          animation: strengthLeft 70s linear infinite;
-        }
-
-        .strength-marquee-right {
-          animation: strengthRight 75s linear infinite;
-        }
-
-        @keyframes skillsLeft {
-          from {
-            transform: translateX(0);
-          }
-
-          to {
-            transform: translateX(-50%);
-          }
-        }
-
-        @keyframes skillsRight {
-          from {
-            transform: translateX(-50%);
-          }
-
-          to {
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes strengthLeft {
-          from {
-            transform: translateX(0);
-          }
-
-          to {
-            transform: translateX(-50%);
-          }
-        }
-
-        @keyframes strengthRight {
-          from {
-            transform: translateX(-50%);
-          }
-
-          to {
-            transform: translateX(0);
-          }
-        }
-
-        /*
-         * Pause on hover
-         */
-        .marquee-track:hover {
-          animation-play-state: paused;
-        }
-
-        /*
-         * Accessibility
-         */
-        @media (prefers-reduced-motion: reduce) {
-          .skills-marquee-left,
-          .skills-marquee-right,
-          .strength-marquee-left,
-          .strength-marquee-right {
-            animation: none;
-            transform: none;
-          }
-        }
-      `}</style>
     </section>
-  );
-}
-
-/* =========================================================
-   GENERIC MARQUEE ROW
-========================================================= */
-
-function MarqueeRow<T>({
-  items,
-  animationClass,
-  renderItem,
-}: {
-  items: T[];
-  animationClass: string;
-  renderItem: (item: T) => ReactNode;
-}) {
-  return (
-    <div className="marquee-container">
-
-      <div
-        className={`marquee-track ${animationClass}`}
-      >
-        {/* FIRST SET */}
-
-        <div className="flex shrink-0 gap-5 pr-5">
-          {items.map(renderItem)}
-        </div>
-
-        {/* DUPLICATE SET FOR SEAMLESS LOOP */}
-
-        <div
-          className="flex shrink-0 gap-5 pr-5"
-          aria-hidden="true"
-        >
-          {items.map((item, index) => (
-            <div key={`duplicate-${index}`}>
-              {renderItem(item)}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -588,8 +324,8 @@ function SkillCard({
       className="
         flex
         min-h-[190px]
-        w-[290px]
-        shrink-0
+        w-full
+        min-w-0
         flex-col
         rounded-2xl
         border-border/60
@@ -681,8 +417,8 @@ function EngineeringCard({
       className="
         flex
         min-h-[235px]
-        w-[320px]
-        shrink-0
+        w-full
+        min-w-0
         flex-col
         rounded-2xl
         border-border/60

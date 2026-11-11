@@ -1,78 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Mail } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Play, Video } from 'lucide-react';
+import Image from 'next/image';
 import { WhatsappIcon } from './Icons';
-
-const roles = [
-  'Physics Graduate',
-  'Social Media Content Creator',
-  'Primary Tutor',
-  'Video Editor & Canva Designer',
-];
 
 /* =========================================================
    HERO COMPONENT
 ========================================================= */
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-  /* =======================================================
-     TYPING ANIMATION
-  ======================================================= */
-
-  useEffect(() => {
-    const currentRole = roles[roleIndex];
-
-    let timer: NodeJS.Timeout;
-
-    if (!isDeleting && displayText !== currentRole) {
-      timer = setTimeout(() => {
-        setDisplayText(
-          currentRole.slice(
-            0,
-            displayText.length + 1
-          )
-        );
-      }, 90);
-    } else if (
-      !isDeleting &&
-      displayText === currentRole
-    ) {
-      timer = setTimeout(() => {
-        setIsDeleting(true);
-      }, 2000);
-    } else if (
-      isDeleting &&
-      displayText !== ''
-    ) {
-      timer = setTimeout(() => {
-        setDisplayText(
-          currentRole.slice(
-            0,
-            displayText.length - 1
-          )
-        );
-      }, 50);
-    } else if (
-      isDeleting &&
-      displayText === ''
-    ) {
-      timer = setTimeout(() => {
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % roles.length);
-      }, 0);
-    }
-
-    return () => clearTimeout(timer);
-  }, [
-    displayText,
-    isDeleting,
-    roleIndex,
-  ]);
   return (
     <section
       id="home"
@@ -107,204 +46,108 @@ export default function Hero() {
           MAIN CONTAINER
       ================================================= */}
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
-        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-
-
-          <div className="flex w-full flex-col items-center">
-
-            {/* Available badge */}
-
-            <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.08em] uppercase text-primary bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-full mb-6">
-
-              <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#10b981] animate-pulse" />
-
-              Available for New Projects
-
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6">
+        <div className="mx-auto flex w-full flex-col items-center gap-7 sm:gap-9 lg:gap-12">
+          <div className="w-full max-w-[22rem] sm:max-w-2xl lg:max-w-5xl">
+            <div className="relative overflow-hidden rounded-2xl bg-card p-2 shadow-[0_24px_80px_var(--color-accent-glow)] sm:rounded-3xl sm:p-3">
+              <div className="relative aspect-video overflow-hidden rounded-xl bg-black sm:rounded-2xl lg:aspect-[2/1]">
+                {isVideoPlaying ? (
+                  <iframe
+                    className="absolute inset-0 h-full w-full"
+                    src="https://www.youtube-nocookie.com/embed/x_p2KROTAkY?autoplay=1&rel=0"
+                    title="Hope Is Stronger Than Fear - featured video by Rubab Fatima"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                ) : (
+                  <>
+                    <Image
+                      src="https://i.ytimg.com/vi/x_p2KROTAkY/hqdefault.jpg"
+                      alt="Preview of Hope Is Stronger Than Fear"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 1024px"
+                      unoptimized
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
+                    <button
+                      type="button"
+                      onClick={() => setIsVideoPlaying(true)}
+                      aria-label="Play Hope Is Stronger Than Fear"
+                      className="group absolute inset-0 flex items-center justify-center text-white"
+                    >
+                      <span className="flex size-14 items-center justify-center rounded-full bg-white/25 shadow-lg backdrop-blur-md transition duration-300 group-hover:scale-110 group-hover:bg-primary sm:size-16">
+                        <Play size={25} fill="currentColor" className="ml-1" />
+                      </span>
+                    </button>
+                  </>
+                )}
+              </div>
+              <div className="flex flex-col gap-1 px-2 py-3 sm:px-3">
+                <p className="text-sm font-bold text-foreground sm:text-base">
+                  Hope Is Stronger Than Fear
+                </p>
+                <div className="flex items-center justify-between gap-3 text-[11px] font-medium text-muted-foreground sm:text-xs">
+                  <span>Storytelling · YouTube</span>
+                  <span className="text-primary">Featured video</span>
+                </div>
+              </div>
             </div>
+          </div>
 
-
-            {/* Greeting */}
-
-            <h3 className="text-xl font-semibold text-muted-foreground mb-0.5">
-              Hi, I&apos;m
-            </h3>
-
-
-            {/* Name */}
-
-            <h1
-              className="font-extrabold leading-[1.1] tracking-[-0.03em] mb-3"
-              style={{
-                fontSize:
-                  'clamp(2.25rem, 5.5vw, 3.75rem)',
-
-                background:
-                  'linear-gradient(135deg, var(--color-text-primary) 30%, var(--color-accent) 70%, var(--color-accent-light) 100%)',
-
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-
-                filter:
-                  'drop-shadow(0 4px 24px var(--color-accent-glow))',
-              }}
-            >
-              Rubab Fatima
-            </h1>
-
-
-            {/* Animated Role */}
-
-            <h2
-              className="mb-6 flex min-h-[42px] items-center justify-center font-bold text-muted-foreground"
-              style={{
-                fontSize:
-                  'clamp(1.25rem, 2.8vw, 1.875rem)',
-              }}
-            >
-              <span className="text-primary">
-                {displayText}
-              </span>
-
-              <span className="text-primary font-light animate-[blink_1s_infinite]">
-                |
-              </span>
-            </h2>
-
-
-            {/* Description */}
-
-            <p className="mb-8 max-w-2xl text-base leading-[1.75] text-muted-foreground">
+          <div className="flex w-full max-w-3xl flex-col items-center text-center">
+            <p className="mb-6 text-sm leading-7 text-muted-foreground sm:text-base">
               Physics graduate and creative content creator with experience in{' '}
-
-              <strong className="text-primary font-semibold">
+              <strong className="font-semibold text-primary">
                 teaching since 2019
-              </strong>
-              {' '}and YouTube content creation since 2025. Skilled in{' '}
-
-              <strong className="text-primary font-semibold">
+              </strong>{' '}
+              and YouTube content creation since 2025. Skilled in{' '}
+              <strong className="font-semibold text-primary">
                 CapCut Pro, Canva, and AI-assisted content creation
               </strong>{' '}
-
               with a focus on engaging short-form video.
             </p>
 
-
-            {/* =================================================
-                SOCIAL LINKS
-            ================================================= */}
-
-            <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
-
-              {[
-                {
-                  href: 'https://wa.me/923468074658',
-                  icon: <WhatsappIcon size={18} />,
-                  label: 'WhatsApp',
-                },
-
-                {
-                  href: 'mailto:rubab1668@gmail.com',
-                  icon: <Mail size={18} />,
-                  label: 'Email',
-                },
-              ].map((s) => (
-
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
                 <a
-                  key={s.href}
-                  href={s.href}
+                  href="#projects"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-accent-dark)] to-[var(--color-accent)] px-6 py-3 text-sm font-bold text-primary-foreground shadow-[0_4px_20px_var(--color-accent-glow)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:px-7 sm:text-base"
+                >
+                  <Video size={18} />
+                  View Videos
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-card/80 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/10 sm:px-7 sm:text-base"
+                >
+                  <Mail size={18} />
+                  Discuss a Project
+                </a>
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <a
+                  href="https://wa.me/923468074658"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground bg-card/80 border border-border/60 px-4 py-2 rounded-full backdrop-blur-sm transition-all duration-300 hover:text-white hover:bg-primary hover:border-primary hover:-translate-y-[3px] hover:shadow-[0_4px_20px_var(--color-accent-glow)]"
+                  aria-label="WhatsApp"
+                  className="inline-flex items-center gap-2 rounded-full bg-card/80 px-5 py-3 text-sm font-semibold text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
                 >
-
-                  {s.icon}
-
-                  {s.label && (
-                    <span>{s.label}</span>
-                  )}
-
+                  <WhatsappIcon size={18} />
+                  WhatsApp
                 </a>
-
-              ))}
-
-            </div>
-
-
-            {/* =================================================
-                CTA BUTTONS
-            ================================================= */}
-
-            <div className="flex flex-col sm:flex-row gap-4 mb-10 w-full sm:w-auto">
-
-              <a
-                href="mailto:rubab1668@gmail.com?subject=Resume%20Request"
-                className="inline-flex items-center justify-center gap-2 text-base font-bold text-primary-foreground bg-gradient-to-r from-[var(--color-accent-dark)] to-[var(--color-accent)] px-7 py-3.5 rounded-full transition-all duration-300 shadow-[0_4px_20px_var(--color-accent-glow)] hover:-translate-y-[3px] hover:shadow-[0_6px_28px_var(--color-accent-glow)] hover:brightness-110"
-              >
-                <Mail size={18} />
-                Request Resume
-              </a>
-
-
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 text-base font-semibold text-foreground bg-card/80 border border-border/60 px-7 py-3.5 rounded-full transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:-translate-y-[3px] hover:shadow-[0_4px_20px_var(--color-accent-glow)]"
-              >
-
-                <Mail size={18} />
-
-                Contact Me
-
-              </a>
-
-            </div>
-
-
-            {/* =================================================
-                STATS
-            ================================================= */}
-
-            <div className="grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
-
-              {[
-                {
-                  value: '2019+',
-                  label: 'Tutoring Since',
-                },
-
-                {
-                  value: '2025+',
-                  label: 'Content Creation',
-                },
-
-                {
-                  value: 'BSc',
-                  label: 'Physics Graduate',
-                },
-              ].map((stat) => (
-
-                <div
-                  key={stat.label}
-                  className="flex flex-col items-center rounded-xl border border-border/60 bg-card/80 px-4 py-4 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 sm:px-5"
+                <a
+                  href="mailto:rubab1668@gmail.com"
+                  aria-label="Email"
+                  className="inline-flex items-center gap-2 rounded-full bg-card/80 px-5 py-3 text-sm font-semibold text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
                 >
-
-                  <span className="text-2xl font-extrabold text-primary">
-                    {stat.value}
-                  </span>
-
-                  <span className="text-xs font-semibold uppercase tracking-[0.05em] text-muted-foreground">
-                    {stat.label}
-                  </span>
-
-                </div>
-
-              ))}
-
+                  <Mail size={18} />
+                  Email
+                </a>
+              </div>
             </div>
-
           </div>
-
         </div>
 
       </div>

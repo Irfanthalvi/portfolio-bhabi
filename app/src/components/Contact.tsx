@@ -14,7 +14,7 @@ export default function Contact() {
           label="Get in Touch"
           title="Let's Work"
           highlight="Together"
-          subtitle="For remote social media roles or content creation opportunities, get in touch."
+          subtitle="Have a video, editing, or content idea? Let’s make it together."
         />
 
         {/* 2-Column Equal Size & Shape Grid */}
@@ -28,12 +28,12 @@ export default function Contact() {
                 </h3>
                 <Badge variant="cyan" className="text-[11px] font-semibold gap-1.5 py-1 px-3">
                   <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                  Available for Hire
+                  Open to Projects
                 </Badge>
               </div>
 
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
-                Reach out by email or phone. I&apos;m seeking a remote social media role and welcome content creation opportunities.
+                Get in touch about video editing, app promotions, or content creation.
               </p>
 
               {/* Direct Channels */}
@@ -98,7 +98,7 @@ export default function Contact() {
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={14} className="text-emerald-400" />
-                <span>Seeking Remote Roles</span>
+                <span>Video &amp; Content Projects</span>
               </div>
             </div>
           </Card>
@@ -153,7 +153,7 @@ export default function Contact() {
                     type="text"
                     id="contact-subject"
                     name="subject"
-                    placeholder="Remote Social Media Role / Content Creation"
+                    placeholder="Video editing / content creation project"
                     required
                   />
                 </div>

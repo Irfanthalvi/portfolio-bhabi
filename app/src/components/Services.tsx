@@ -84,18 +84,6 @@ const services: Service[] = [
   },
 ];
 
-/*
-  Split services into two rows.
-
-  Row 1:
-  1 - 5
-
-  Row 2:
-  6 - 10
-*/
-const firstRow = services.slice(0, 5);
-const secondRow = services.slice(5);
-
 export default function Services() {
   return (
     <section
@@ -112,163 +100,13 @@ export default function Services() {
           subtitle="Content creation, design, video editing, and tutoring skills described in my CV."
         />
 
-        {/* =================================================
-            ROW 1
-        ================================================= */}
-
-        <ServiceMarquee
-          services={firstRow}
-          direction="left"
-        />
-
-        {/* =================================================
-            ROW 2
-        ================================================= */}
-
-        <div className="mt-5">
-          <ServiceMarquee
-            services={secondRow}
-            direction="right"
-          />
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {services.map((service) => (
+            <ServiceCard key={service.title} service={service} />
+          ))}
         </div>
-
       </div>
     </section>
-  );
-}
-
-/* =========================================================
-   SERVICE MARQUEE
-========================================================= */
-
-function ServiceMarquee({
-  services,
-  direction,
-}: {
-  services: Service[];
-  direction: 'left' | 'right';
-}) {
-  return (
-    <div className="relative w-full overflow-hidden">
-
-      {/* Left Fade */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          left-0
-          top-0
-          bottom-0
-          z-10
-          w-10
-          sm:w-16
-        "
-        style={{
-          background:
-            'linear-gradient(to right, var(--color-background), transparent)',
-        }}
-      />
-
-      {/* Right Fade */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          right-0
-          top-0
-          bottom-0
-          z-10
-          w-10
-          sm:w-16
-        "
-        style={{
-          background:
-            'linear-gradient(to left, var(--color-background), transparent)',
-        }}
-      />
-
-      {/* Moving Track */}
-      <div
-        className={
-          direction === 'left'
-            ? 'services-marquee-left flex w-max'
-            : 'services-marquee-right flex w-max'
-        }
-      >
-
-        {/* First Set */}
-        <div className="flex shrink-0 gap-5 pr-5">
-          {services.map((service) => (
-            <ServiceCard
-              key={`first-${service.title}`}
-              service={service}
-            />
-          ))}
-        </div>
-
-        {/* Duplicate Set */}
-        <div
-          className="flex shrink-0 gap-5 pr-5"
-          aria-hidden="true"
-        >
-          {services.map((service) => (
-            <ServiceCard
-              key={`second-${service.title}`}
-              service={service}
-            />
-          ))}
-        </div>
-
-      </div>
-
-      {/* =================================================
-          ANIMATION
-      ================================================= */}
-
-      <style>{`
-        .services-marquee-left {
-          animation: servicesScrollLeft 70s linear infinite;
-          will-change: transform;
-        }
-
-        .services-marquee-right {
-          animation: servicesScrollRight 70s linear infinite;
-          will-change: transform;
-        }
-
-        .services-marquee-left:hover,
-        .services-marquee-right:hover {
-          animation-play-state: paused;
-        }
-
-        @keyframes servicesScrollLeft {
-          from {
-            transform: translateX(0);
-          }
-
-          to {
-            transform: translateX(-50%);
-          }
-        }
-
-        @keyframes servicesScrollRight {
-          from {
-            transform: translateX(-50%);
-          }
-
-          to {
-            transform: translateX(0);
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .services-marquee-left,
-          .services-marquee-right {
-            animation: none;
-          }
-        }
-      `}</style>
-    </div>
   );
 }
 
@@ -286,9 +124,8 @@ function ServiceCard({
       className="
         group
         flex
-        w-[280px]
+        w-full
         min-h-[210px]
-        shrink-0
         flex-col
         rounded-2xl
         border-border/80
@@ -304,10 +141,7 @@ function ServiceCard({
         hover:shadow-xl
         hover:shadow-primary/10
 
-        sm:w-[320px]
         sm:min-h-[220px]
-
-        lg:w-[350px]
       "
     >
 
