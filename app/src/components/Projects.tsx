@@ -20,6 +20,11 @@ const creatorVideos: VideoProject[] = [
     videoId: 'Z44o36KiEKk',
   },
   {
+    title: 'Cars Song for Kids',
+    thumbnailUrl: 'https://i.ytimg.com/vi/9T6UUv81IWc/hq2.jpg',
+    videoId: '9T6UUv81IWc',
+  },
+  {
     title: 'The Two Kind Dolls and the Lonely Teddy Bear',
     thumbnailUrl: 'https://i.ytimg.com/vi/Wpu07-7oiZQ/hq2.jpg',
     videoId: 'Wpu07-7oiZQ',
@@ -35,43 +40,33 @@ const creatorVideos: VideoProject[] = [
     videoId: 'ZCSUZG4Tx_o',
   },
   {
-    title: 'Clean Up Song for Kids',
-    thumbnailUrl: 'https://i.ytimg.com/vi/jfe92n7FQqA/hqdefault.jpg',
-    videoId: 'jfe92n7FQqA',
-  },
-  {
     title: 'My Happy Day',
     thumbnailUrl: 'https://i.ytimg.com/vi/TO1EaZnmxNE/hq2.jpg',
     videoId: 'TO1EaZnmxNE',
   },
   {
-    title: 'Cars Song for Kids',
-    thumbnailUrl: 'https://i.ytimg.com/vi/9T6UUv81IWc/hq2.jpg',
-    videoId: '9T6UUv81IWc',
+    title: 'Clean Up Song for Kids',
+    thumbnailUrl: 'https://i.ytimg.com/vi/jfe92n7FQqA/hqdefault.jpg',
+    videoId: 'jfe92n7FQqA',
   },
 ];
 
 const appVideos: VideoProject[] = [
   {
-    title: 'Arrow Puzzle App Promo',
-    thumbnailUrl:
-      'https://play-lh.googleusercontent.com/8CB0EZWQnPHCbj8YDUss0q_UXo--0m1jCqAtQvLt0YUZljtUZMr78f9HPUx_0gJWOHjduAZ2KxA3uFOwtEDS=w1052-h592-rw',
-    videoUrl:
-      'https://play-games.googleusercontent.com/vp/mp4/1280x720/XKDtPxYrVhs.mp4',
+    title: 'Signature Maker & eSign PDF App Promo',
+    thumbnailUrl: 'https://i.ytimg.com/vi/DJvf-XqmJXc/hqdefault.jpg',
+    videoId: 'DJvf-XqmJXc',
   },
   {
     title: 'Bounzo Panda App Promo',
-    thumbnailUrl:
-      'https://play-lh.googleusercontent.com/h_h68vAT5o287lvnVgginEQgjQiBm7NswoyaHtiktCFjw3qCghKpHrvj0hmXp1RFo9r6irUxlZsb6mJXOBwbLw=w1052-h592-rw',
-    videoUrl:
-      'https://play-games.googleusercontent.com/vp/mp4/1280x720/WKsX7K4be1Y.mp4',
+    thumbnailUrl: 'https://i.ytimg.com/vi/WKsX7K4be1Y/hqdefault.jpg',
+    videoId: 'WKsX7K4be1Y',
   },
   {
     title: 'Arrow Drift App Promo',
     thumbnailUrl:
       'https://play-lh.googleusercontent.com/SoMQMg3wGdzhX3IkI5zamYUVDALnLz0hEOrWvbtRGZUXQZrvEZapGZRQr7u2k0bfLkfP7ogqSExipcwD9CZq=w1052-h592-rw',
-    videoUrl:
-      'https://play-games.googleusercontent.com/vp/mp4/1280x720/lP3V3KDNDXY.mp4',
+    videoId: 'lP3V3KDNDXY',
   },
 ];
 
@@ -91,7 +86,7 @@ export default function Projects() {
         />
 
         <div className="mx-auto mt-8 grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {creatorVideos.map((project) => (
+          {appVideos.map((project) => (
             <VideoCard
               key={project.title}
               project={project}
@@ -103,7 +98,7 @@ export default function Projects() {
           ))}
         </div>
         <div className="mx-auto mt-5 grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {appVideos.map((project) => (
+          {creatorVideos.map((project) => (
             <VideoCard
               key={project.title}
               project={project}
