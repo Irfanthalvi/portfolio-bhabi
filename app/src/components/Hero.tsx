@@ -127,8 +127,8 @@ export default function Hero() {
               </div>
               <div className="flex flex-wrap items-center justify-center gap-2">
                 <a
-                  href="/Rubab_Fatima_ATS_CV.docx"
-                  download="Rubab_Fatima_ATS_CV.docx"
+                  href="/Rubab_Fatima_CV.pdf"
+                  download="Rubab_Fatima_CV.pdf"
                   aria-label="Download CV"
                   className="inline-flex items-center gap-2 rounded-full bg-card/80 px-5 py-3 text-sm font-semibold text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
                 >
