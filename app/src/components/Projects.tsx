@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -70,11 +71,53 @@ const appVideos: VideoProject[] = [
   },
 ];
 
+// Four local MP4 videos
+const extraVideos: VideoProject[] = [
+  {
+    title: 'Video 1',
+    thumbnailUrl: '',
+    videoUrl: '/videoNo-4.mp4',
+  },
+  {
+    title: 'Video 2',
+    thumbnailUrl: '',
+    videoUrl: '/videoNo-3.mp4',
+  },
+  {
+    title: 'Video 3',
+    thumbnailUrl: '',
+    videoUrl: '/videoNo-2.mp4',
+  },
+  {
+    title: 'Video 4',
+    thumbnailUrl: '',
+    videoUrl: '/videoNo-1.mp4',
+  },
+];
+
+// All videos in one continuous list.
+// Video 11 and Video 12 are excluded.
+const allVideos = [
+  ...appVideos,
+  ...extraVideos,
+  ...creatorVideos,
+].filter((_, index) => index !== 10 && index !== 11);
+
 export default function Projects() {
   const [activeVideoKey, setActiveVideoKey] = useState<string | null>(null);
 
+  const playVideo = (project: VideoProject) => {
+    const videoKey = project.videoId ?? project.videoUrl ?? null;
+
+    // Switching videos unmounts the previous player.
+    setActiveVideoKey(videoKey);
+  };
+
   return (
-    <section id="projects" className="relative overflow-hidden bg-background py-14 sm:py-16">
+    <section
+      id="projects"
+      className="relative overflow-hidden bg-background py-14 sm:py-16"
+    >
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Header */}
@@ -85,30 +128,21 @@ export default function Projects() {
           highlight="Work"
         />
 
-        <div className="mx-auto mt-8 grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {appVideos.map((project) => (
+        {/* All Videos - 3 Videos Per Row */}
+
+        <div className="mx-auto mt-8 grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {allVideos.map((project) => (
             <VideoCard
-              key={project.title}
+              key={project.videoId ?? project.videoUrl ?? project.title}
               project={project}
-              isPlaying={activeVideoKey === (project.videoId ?? project.videoUrl)}
-              onPlay={() =>
-                setActiveVideoKey(project.videoId ?? project.videoUrl ?? null)
+              isPlaying={
+                activeVideoKey === (project.videoId ?? project.videoUrl)
               }
+              onPlay={() => playVideo(project)}
             />
           ))}
         </div>
-        <div className="mx-auto mt-5 grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {creatorVideos.map((project) => (
-            <VideoCard
-              key={project.title}
-              project={project}
-              isPlaying={activeVideoKey === (project.videoId ?? project.videoUrl)}
-              onPlay={() =>
-                setActiveVideoKey(project.videoId ?? project.videoUrl ?? null)
-              }
-            />
-          ))}
-        </div>
+
       </div>
     </section>
   );
@@ -125,38 +159,63 @@ function VideoCard({
 }) {
   return (
     <div className="group relative aspect-video overflow-hidden rounded-xl bg-muted">
+
+      {/* Active Local MP4 Video */}
+
       {isPlaying && project.videoUrl ? (
         <video
+          key={`active-${project.videoUrl}`}
           className="absolute inset-0 h-full w-full object-cover"
           src={project.videoUrl}
-          poster={project.thumbnailUrl}
           controls
           autoPlay
           playsInline
-        />
+          preload="metadata"
+        >
+          Your browser does not support the video tag.
+        </video>
       ) : isPlaying && project.videoId ? (
+
+        /* Active YouTube Video */
+
         <iframe
+          key={`youtube-${project.videoId}`}
           className="absolute inset-0 h-full w-full"
           src={`https://www.youtube-nocookie.com/embed/${project.videoId}?autoplay=1&rel=0`}
           title={project.title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
+
       ) : (
+
+        /* Video Thumbnail / Preview */
+
         <>
-          <Image
-            src={project.thumbnailUrl}
-            alt=""
-            width={480}
-            height={360}
-            unoptimized
-            className="h-full w-full object-cover"
-            aria-hidden="true"
-          />
+          {project.thumbnailUrl ? (
+            <Image
+              src={project.thumbnailUrl}
+              alt={project.title}
+              width={480}
+              height={360}
+              unoptimized
+              className="h-full w-full object-cover"
+              aria-hidden="true"
+            />
+          ) : (
+            <video
+              className="h-full w-full object-cover"
+              src={project.videoUrl}
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+            />
+          )}
+
           <button
             type="button"
             onClick={onPlay}
-            aria-label="Play video"
+            aria-label={`Play ${project.title}`}
             className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/25 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-primary"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105">
@@ -165,6 +224,7 @@ function VideoCard({
           </button>
         </>
       )}
+
     </div>
   );
 }
